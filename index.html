@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PDG Revit Tools — Command Reference</title>
+<style>
+  :root {
+    --bg: #1a1d23;
+    --surface: #22262f;
+    --surface-hover: #2a2f3a;
+    --border: #333844;
+    --accent: #0696d7;
+    --accent-dim: #0696d720;
+    --text: #e8eaf0;
+    --text-muted: #8892a4;
+    --tag-bg: #1e3a4a;
+    --tag-text: #5bbfe8;
+    --panel-sheets:     #0696d7;
+    --panel-elevations: #e53935;
+    --panel-assembly:   #8d6e63;
+    --panel-schedules:  #7c4dff;
+    --panel-parameters: #00bfa5;
+    --panel-analysis:   #ff6d00;
+    --panel-model:      #43a047;
+    --radius: 10px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.5;
+  }
+
+  /* ── Header ── */
+  header {
+    background: linear-gradient(135deg, #0d1117 0%, #1a2535 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 40px 28px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(8px);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .logo svg { width: 26px; height: 26px; }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+    max-width: 420px;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 9px 12px 9px 38px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #search:focus { border-color: var(--accent); }
+  #search::placeholder { color: var(--text-muted); }
+
+  .stats {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── Filter pills ── */
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+  }
+
+  .pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .pill:hover { border-color: var(--accent); color: var(--text); }
+
+  .pill.active {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .pill-count {
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 1px 6px;
+    font-size: 11px;
+  }
+
+  /* ── Main layout ── */
+  main {
+    padding: 32px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* ── Panel section ── */
+  .panel-section {
+    margin-bottom: 40px;
+  }
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .panel-icon svg { width: 17px; height: 17px; }
+
+  .panel-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .panel-count {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--text-muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2px 9px;
+  }
+
+  /* ── Command grid ── */
+  .cmd-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+
+  /* ── Command card ── */
+  .cmd-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 18px 16px;
+    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: default;
+  }
+
+  .cmd-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+
+  .cmd-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cmd-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .cmd-icon svg { width: 20px; height: 20px; }
+
+  .cmd-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    flex: 1;
+  }
+
+  .cmd-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .cmd-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 5px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .tag-module {
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
+  }
+
+  /* ── No results ── */
+  .no-results {
+    text-align: center;
+    padding: 64px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+
+  .no-results svg { margin-bottom: 12px; opacity: 0.3; }
+  .no-results p { font-size: 15px; }
+
+  /* ── Panel color theming ── */
+  .panel-sheets      .panel-icon { background: #0696d720; color: #0696d7; }
+  .panel-elevations  .panel-icon { background: #e5393520; color: #e53935; }
+  .panel-assembly    .panel-icon { background: #8d6e6320; color: #a1887f; }
+  .panel-schedules   .panel-icon { background: #7c4dff20; color: #a57aff; }
+  .panel-parameters  .panel-icon { background: #00bfa520; color: #00bfa5; }
+  .panel-analysis    .panel-icon { background: #ff6d0020; color: #ff9040; }
+  .panel-model       .panel-icon { background: #43a04720; color: #66bb6a; }
+
+  .panel-sheets      .panel-name { color: #0696d7; }
+  .panel-elevations  .panel-name { color: #e53935; }
+  .panel-assembly    .panel-name { color: #a1887f; }
+  .panel-schedules   .panel-name { color: #a57aff; }
+  .panel-parameters  .panel-name { color: #00bfa5; }
+  .panel-analysis    .panel-name { color: #ff9040; }
+  .panel-model       .panel-name { color: #66bb6a; }
+
+  /* cmd-icon per panel color */
+  .panel-sheets      .cmd-icon { background: #0696d718; color: #3fb3e8; }
+  .panel-elevations  .cmd-icon { background: #e5393518; color: #ef9a9a; }
+  .panel-assembly    .cmd-icon { background: #8d6e6318; color: #bcaaa4; }
+  .panel-schedules   .cmd-icon { background: #7c4dff18; color: #b399ff; }
+  .panel-parameters  .cmd-icon { background: #00bfa518; color: #2fd6be; }
+  .panel-analysis    .cmd-icon { background: #ff6d0018; color: #ffab66; }
+  .panel-model       .cmd-icon { background: #43a04718; color: #80c784; }
+
+  /* ── Responsive ── */
+  @media (max-width: 700px) {
+    header { padding: 20px; }
+    main { padding: 20px; }
+    .header-controls { flex-direction: column; align-items: stretch; }
+    .search-wrap { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+    </div>
+    <div>
+      <h1>PDG <span>Revit Tools</span></h1>
+      <div class="subtitle">Command Reference — PDGRevitAddinCollection</div>
+    </div>
+  </div>
+
+  <div class="header-controls">
+    <div class="search-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="stats" id="stats">31 commands · 7 panels</div>
+  </div>
+
+  <div class="filters">
+    <button class="pill active" data-filter="all">
+      <span>All</span>
+      <span class="pill-count" id="count-all">31</span>
+    </button>
+    <button class="pill" data-filter="sheets">
+      <span class="pill-dot" style="background:#0696d7"></span>
+      Sheets &amp; Views
+      <span class="pill-count" id="count-sheets">6</span>
+    </button>
+    <button class="pill" data-filter="elevations">
+      <span class="pill-dot" style="background:#e53935"></span>
+      Elevation Tools
+      <span class="pill-count" id="count-elevations">6</span>
+    </button>
+    <button class="pill" data-filter="assembly">
+      <span class="pill-dot" style="background:#a1887f"></span>
+      Assembly Tools
+      <span class="pill-count" id="count-assembly">5</span>
+    </button>
+    <button class="pill" data-filter="schedules">
+      <span class="pill-dot" style="background:#a57aff"></span>
+      Schedules &amp; Doors
+      <span class="pill-count" id="count-schedules">4</span>
+    </button>
+    <button class="pill" data-filter="parameters">
+      <span class="pill-dot" style="background:#00bfa5"></span>
+      Parameters
+      <span class="pill-count" id="count-parameters">2</span>
+    </button>
+    <button class="pill" data-filter="analysis">
+      <span class="pill-dot" style="background:#ff9040"></span>
+      Analysis
+      <span class="pill-count" id="count-analysis">3</span>
+    </button>
+    <button class="pill" data-filter="model">
+      <span class="pill-dot" style="background:#66bb6a"></span>
+      Model Setup
+      <span class="pill-count" id="count-model">5</span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Sheets & Views ── -->
+  <div class="panel-section panel-sheets" data-panel="sheets">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="9" y1="21" x2="9" y2="9"/>
+        </svg>
+      </div>
+      <span class="panel-name">Sheets &amp; Views</span>
+      <span class="panel-count">6 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="manage sheets" data-desc="create delete rename set title blocks revisions sheets">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/>
+              <line x1="9" y1="11" x2="15" y2="11"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Manage Sheets</div>
+        </div>
+        <div class="cmd-desc">Create, delete, rename, and configure sheets in the active project. Set title blocks, revision clouds, and edit title block parameters from a single dialog.</div>
+        <div class="cmd-footer">
+          <span class="tag">SheetTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="set view phase" data-desc="phase views sheets floor plan ceiling">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Set View Phase</div>
+        </div>
+        <div class="cmd-desc">Sets the phase on all eligible views placed on selected sheets. Phase filters are not modified — only the view phase property is updated.</div>
+        <div class="cmd-footer">
+          <span class="tag">SheetTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="create rcp reflected ceiling plan" data-desc="ceiling plan floor plan crop region room tag ceiling tag view template">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
+              <line x1="12" y1="22" x2="12" y2="15.5"/><line x1="22" y1="8.5" x2="12" y2="15.5"/>
+              <line x1="2" y1="8.5" x2="12" y2="15.5"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Create RCP</div>
+        </div>
+        <div class="cmd-desc">Creates reflected ceiling plan views from selected floor plans. Matches the crop region exactly (including custom shapes), applies a view template, and places room &amp; ceiling tags automatically.</div>
+        <div class="cmd-footer">
+          <span class="tag">RCPTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="create existing demo plan existing demolition phase" data-desc="existing demo plan CD22 view template duplicate sheets phase preceding">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>
+              <line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Create Existing &amp; Demo Plan</div>
+        </div>
+        <div class="cmd-desc">Duplicates selected sheets and all floor plan views on them, applies the CD22 view template, and sets each view's phase to the preceding phase. Produces ready-to-use Existing &amp; Demo plan sheets from your current construction documents.</div>
+        <div class="cmd-footer">
+          <span class="tag">ExistingDemoTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="set view titles viewport title label position" data-desc="viewport title label sheet position all sheets">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+              <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
+              <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Set View Titles</div>
+        </div>
+        <div class="cmd-desc">Automatically repositions viewport title labels across all sheets in the project. Ensures consistent title placement without manual adjustment per sheet.</div>
+        <div class="cmd-footer">
+          <span class="tag">DraftingTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="create working drawings floor plan views levels" data-desc="working floor plan views levels drafting">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Create Working Drawings</div>
+        </div>
+        <div class="cmd-desc">Creates working floor plan views for selected levels in the project. Streamlines the initial drafting setup by generating plan views in bulk from a level selection dialog.</div>
+        <div class="cmd-footer">
+          <span class="tag">DraftingTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Elevation Tools ── -->
+  <div class="panel-section panel-elevations" data-panel="elevations">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+          <polyline points="16 7 22 7 22 13"/>
+        </svg>
+      </div>
+      <span class="panel-name">Elevation Tools</span>
+      <span class="panel-count">6 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="create room elevations elevation builder" data-desc="room elevations north south east west elevation markers 4-view set room name number project north orientation">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <line x1="12" y1="22" x2="12" y2="9"/>
+              <line x1="8" y1="13" x2="12" y2="9"/><line x1="16" y1="13" x2="12" y2="9"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Create Room Elevations</div>
+        </div>
+        <div class="cmd-desc">Creates a 4-view elevation set (N/S/E/W) for each selected room. Places elevation markers around the room boundary, names views from the room name and number, and applies a project north orientation.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="selection elevations element selection elevation" data-desc="elements selection bounding box elevations north south east west marker offset CD32 interior elevation template">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="1" stroke-dasharray="4 2"/>
+              <line x1="12" y1="3" x2="12" y2="21"/>
+              <line x1="3" y1="12" x2="21" y2="12"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Selection Elevations</div>
+        </div>
+        <div class="cmd-desc">Creates N/S/E/W elevation views around the combined bounding box of user-picked elements. Set the marker offset distance (2'–5') from a dialog; applies the CD32 Interior Elevation template automatically.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="rotate crop region plan view angle" data-desc="crop region rotate plan view angle degrees custom shape boundary">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"/>
+              <path d="M3.51 15a9 9 0 1 0 .49-4.95"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Rotate Crop Region</div>
+        </div>
+        <div class="cmd-desc">Rotates the crop region of the active plan view by a user-specified angle. Works with both rectangular and custom-shaped crop regions, rotating around the crop centroid.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="reference plan creator floor plan callout elevation view" data-desc="reference plans callouts elevation views link navigation floor plan">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Reference Plan Creator</div>
+        </div>
+        <div class="cmd-desc">Creates reference floor plan callouts linked to selected elevation views. Connects each reference plan back to its source elevation, enabling fast two-way navigation during production drawing.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="create elevation sheets pack room category layout" data-desc="elevation sheets room category 24x36 row fill pack layout all elevation views sheets">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/>
+              <rect x="6" y="12" width="5" height="5" rx="1"/>
+              <rect x="13" y="12" width="5" height="5" rx="1"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Create Elevation Sheets</div>
+        </div>
+        <div class="cmd-desc">Scans all elevation views in the model, groups them by category and room, and packs them onto sheets using a row-fill layout algorithm. Keeps each room's elevation set together on the same sheet.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationSheetTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="set level head extents level line crop boundary CD32 interior elevation" data-desc="level lines extents crop region boundary interior elevation view template CD32 trim 1/4 inch bubble">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <line x1="5" y1="6" x2="19" y2="6"/>
+              <line x1="5" y1="18" x2="19" y2="18"/>
+              <circle cx="19" cy="12" r="2"/><circle cx="5" cy="6" r="2"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Set Level Head Extents</div>
+        </div>
+        <div class="cmd-desc">Trims level line extents to the crop region boundary for every elevation using the CD32 Interior Elevation view template. Extends 1/4" past the boundary wherever a level head bubble is visible.</div>
+        <div class="cmd-footer">
+          <span class="tag">ElevationTools</span>
+          <span class="tag tag-module">Elevation Tools</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Assembly Tools ── -->
+  <div class="panel-section panel-assembly" data-panel="assembly">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2"/>
+          <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+          <line x1="12" y1="12" x2="12" y2="17"/>
+          <line x1="9" y1="14" x2="15" y2="14"/>
+        </svg>
+      </div>
+      <span class="panel-name">Assembly Tools</span>
+      <span class="panel-count">5 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="all assembly builder wall floor ceiling roof CD23" data-desc="all assembly builders at once wall floor ceiling roof CD23 sheets drafting view detail groups type mark combined">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="9" height="9" rx="1"/><rect x="13" y="3" width="9" height="9" rx="1"/>
+              <rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/>
+            </svg>
+          </div>
+          <div class="cmd-name">All Assembly Builder</div>
+        </div>
+        <div class="cmd-desc">Runs all four assembly builders (walls, floors, ceilings, roofs) in a single pass across every CD23 sheet. Reports a combined summary of drafting views created and any replaced viewports.</div>
+        <div class="cmd-footer">
+          <span class="tag">WallAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="wall assembly builder wall type mark detail group CD23" data-desc="wall assembly builder CD23 sheets tagged wall types type mark detail groups drafting view place">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="1"/>
+              <line x1="3" y1="8" x2="21" y2="8"/>
+              <line x1="3" y1="13" x2="21" y2="13"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Wall Assembly Builder</div>
+        </div>
+        <div class="cmd-desc">For every sheet using the CD23 view template, finds all tagged wall types, creates a drafting view containing their matched detail groups, and places it on the sheet. Detail group names must start with the wall type's Type Mark followed by " – ".</div>
+        <div class="cmd-footer">
+          <span class="tag">WallAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="floor assembly builder floor type mark detail group CD23" data-desc="floor assembly builder CD23 sheets tagged floor types type mark detail groups drafting view slab">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="14" width="20" height="7" rx="1"/>
+              <line x1="2" y1="10" x2="22" y2="10"/>
+              <line x1="2" y1="6" x2="22" y2="6"/>
+              <line x1="2" y1="2" x2="22" y2="2"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Floor Assembly Builder</div>
+        </div>
+        <div class="cmd-desc">For every CD23 sheet, finds all tagged floor types, creates a drafting view with their matched detail groups, and places it on the sheet. Detail group names must start with the floor type's Type Mark followed by " – ".</div>
+        <div class="cmd-footer">
+          <span class="tag">FloorAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="ceiling assembly builder ceiling type mark detail group CD23" data-desc="ceiling assembly builder CD23 sheets tagged ceiling types type mark detail groups drafting view suspended acoustic">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="7" rx="1"/>
+              <line x1="2" y1="14" x2="22" y2="14"/>
+              <line x1="2" y1="18" x2="22" y2="18"/>
+              <line x1="2" y1="22" x2="22" y2="22"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Ceiling Assembly Builder</div>
+        </div>
+        <div class="cmd-desc">For every CD23 sheet, finds all tagged ceiling types, creates a drafting view with their matched detail groups, and places it on the sheet. Detail group names must start with the ceiling type's Type Mark followed by " – ".</div>
+        <div class="cmd-footer">
+          <span class="tag">CeilingAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="roof assembly builder roof type mark detail group CD23" data-desc="roof assembly builder CD23 sheets tagged roof types type mark detail groups drafting view membrane low slope">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="3 12 12 3 21 12"/>
+              <rect x="5" y="12" width="14" height="9" rx="1"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Roof Assembly Builder</div>
+        </div>
+        <div class="cmd-desc">For every CD23 sheet, finds all tagged roof types, creates a drafting view with their matched detail groups, and places it on the sheet. Detail group names must start with the roof type's Type Mark followed by " – ".</div>
+        <div class="cmd-footer">
+          <span class="tag">RoofAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Schedules & Doors ── -->
+  <div class="panel-section panel-schedules" data-panel="schedules">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/>
+          <line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/>
+          <line x1="15" y1="9" x2="15" y2="21"/>
+        </svg>
+      </div>
+      <span class="panel-name">Schedules &amp; Doors</span>
+      <span class="panel-count">4 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="schedule editor excel import export spreadsheet" data-desc="edit schedules spreadsheet excel import export">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+              <line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Schedule Editor</div>
+        </div>
+        <div class="cmd-desc">Edit Revit schedule data in a spreadsheet-style dialog. Supports direct cell editing, Excel import and export, and bulk data management — all from within Revit.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Schedules &amp; Doors</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="assembly view builder detail groups drafting views type mark" data-desc="assembly view builder sheets detail groups type mark walls floors ceilings roofs drafting view place groups">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/><polyline points="12 18 15 15 12 12"/>
+              <line x1="9" y1="15" x2="15" y2="15"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Assembly View Builder</div>
+        </div>
+        <div class="cmd-desc">Scans views on selected sheets for walls, floors, ceilings, and roofs whose type mark matches a detail group name. Creates a drafting view per sheet and places the matched detail groups automatically.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Schedules &amp; Doors</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="door host wall type mark assign parameter" data-desc="door host wall type mark parameter assign all instances">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <rect x="9" y="14" width="6" height="8" rx="0.5"/>
+              <circle cx="12" cy="18" r="0.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Door Host Wall</div>
+        </div>
+        <div class="cmd-desc">Sets the <em>Door's Host Wall</em> parameter on every door instance to the host wall's type mark. Populates this parameter in bulk across the entire model automatically.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Schedules &amp; Doors</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="door schedule fill frr fire rating wall host" data-desc="door schedule fill FRR fire rating door host wall frame rating parameters">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="11" y2="17"/>
+              <path d="M15 13c.5-1.5 1.5-2 2-3s.5-2-1-3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Door Schedule</div>
+        </div>
+        <div class="cmd-desc">Fills door schedule parameters — <em>Door's Host Wall</em>, <em>Door FRR</em>, and <em>Frame FRR</em> — by reading the host wall type mark and fire rating, then mapping via the PDG fire rating table.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Schedules &amp; Doors</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Parameters ── -->
+  <div class="panel-section panel-parameters" data-panel="parameters">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+          <path d="M4.93 4.93a10 10 0 0 0 0 14.14"/>
+        </svg>
+      </div>
+      <span class="panel-name">Parameters</span>
+      <span class="panel-count">2 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="shared parameter creator create bind categories" data-desc="shared parameters create bind categories project parameters">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Shared Parameter Creator</div>
+        </div>
+        <div class="cmd-desc">Creates shared parameters and binds them to specified Revit categories in the active project. Simplifies shared parameter management without manual file editing.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Parameters</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="family parameter converter instance type family editor" data-desc="family parameters convert instance type family editor convert parameter">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
+              <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Family Parameter Converter</div>
+        </div>
+        <div class="cmd-desc">Converts family parameters between instance and type within the Family Editor. Avoids manual recreation — flip parameter scope directly from the addin dialog.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Parameters</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Analysis ── -->
+  <div class="panel-section panel-analysis" data-panel="analysis">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/>
+        </svg>
+      </div>
+      <span class="panel-name">Analysis</span>
+      <span class="panel-count">3 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="report building area filled region area level parameter" data-desc="building area filled regions area level parameters update">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M7 7h4v4H7z" fill="currentColor" opacity="0.3"/>
+              <path d="M13 7h4v4h-4z" fill="currentColor" opacity="0.15"/>
+              <path d="M7 13h4v4H7z" fill="currentColor" opacity="0.15"/>
+              <path d="M13 13h4v4h-4z" fill="currentColor" opacity="0.25"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Report Building Area</div>
+        </div>
+        <div class="cmd-desc">Updates area and level parameters on all Building Area filled regions in the model. Keeps area schedule data consistent with the current design state.</div>
+        <div class="cmd-footer">
+          <span class="tag">DraftingTools</span>
+          <span class="tag tag-module">Analysis</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="building code analysis compliance chart occupancy" data-desc="building code review chart family compliance data populate">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Building Code Analysis</div>
+        </div>
+        <div class="cmd-desc">Populates a Building Code Review Chart family with code compliance data. Automates data entry into the code summary table placed in the Revit model.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Analysis</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="land use analysis zoning bylaw chart compliance" data-desc="land use bylaw chart family zoning compliance data populate">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Land Use Analysis</div>
+        </div>
+        <div class="cmd-desc">Populates a Land Use Bylaw Chart family with zoning compliance data. Fills the site analysis table placed in the model directly from the addin dialog.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Analysis</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Model Setup ── -->
+  <div class="panel-section panel-model" data-panel="model">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+      </div>
+      <span class="panel-name">Model Setup</span>
+      <span class="panel-count">5 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="grid builder structural grid columns rectilinear origin" data-desc="structural grid rectilinear place model origin columns bays">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
+              <line x1="6" y1="2" x2="6" y2="22"/><line x1="18" y1="2" x2="18" y2="22"/>
+              <line x1="2" y1="6" x2="22" y2="6"/><line x1="2" y1="18" x2="22" y2="18"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Grid Builder</div>
+        </div>
+        <div class="cmd-desc">Define and place a full rectilinear structural grid at the model origin. Specify column spacing, bay counts, and grid naming from a single dialog — no manual grid line placement needed.</div>
+        <div class="cmd-footer">
+          <span class="tag">BaseBuildingTools</span>
+          <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="find replace text notes text note all document" data-desc="find replace text notes active document all text batch">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              <line x1="9" y1="11" x2="13" y2="11"/><line x1="11" y1="9" x2="11" y2="13"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Find &amp; Replace</div>
+        </div>
+        <div class="cmd-desc">Find and replace text in all text notes across the active document. Batch-updates drafting text without needing to locate and edit each note individually.</div>
+        <div class="cmd-footer">
+          <span class="tag">FindReplaceTools</span>
+          <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="renumber elements rooms doors windows viewports sequential mark" data-desc="renumber rooms doors windows viewports sheet sequential pick click prefix start number step wizard">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Renumber Elements</div>
+        </div>
+        <div class="cmd-desc">Two-step wizard to sequentially renumber rooms, doors, windows, or sheet viewports by clicking elements one at a time. Configure a prefix, start number, and step value before entering the pick loop — press Escape to finish.</div>
+        <div class="cmd-footer">
+          <span class="tag">RenumberTools</span>
+          <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="set metric units length area volume angle mm meters" data-desc="metric units millimeters meters area volume angle sheet length project units">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/>
+              <path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/>
+              <line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/>
+              <line x1="17.5" y1="10" x2="17.5" y2="14"/><line x1="10" y1="17.5" x2="14" y2="17.5"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Set Metric Units</div>
+        </div>
+        <div class="cmd-desc">Sets the project display units to metric: length to mm (0 d.p.), distances to m (3 d.p.), area to m², volume to m³, angle to degrees, and sheet length to mm.</div>
+        <div class="cmd-footer">
+          <span class="tag">UnitTools</span>
+          <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="set imperial units feet inches fractional area volume angle" data-desc="imperial units feet fractional inches area square feet cubic feet angle sheet length project units">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" y1="20" x2="4" y2="4"/><line x1="4" y1="4" x2="8" y2="4"/>
+              <line x1="4" y1="10" x2="7" y2="10"/><line x1="4" y1="16" x2="8" y2="16"/>
+              <line x1="12" y1="20" x2="12" y2="8"/><line x1="12" y1="8" x2="15" y2="8"/>
+              <line x1="12" y1="13" x2="14" y2="13"/><line x1="12" y1="20" x2="15" y2="20"/>
+              <line x1="19" y1="20" x2="19" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/>
+              <line x1="19" y1="20" x2="21" y2="20"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Set Imperial Units</div>
+        </div>
+        <div class="cmd-desc">Sets the project display units to imperial: length and distance to feet &amp; fractional inches (1/32"), area to SF, volume to CF, angle to degrees, and sheet length to fractional inches.</div>
+        <div class="cmd-footer">
+          <span class="tag">UnitTools</span>
+          <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="no-results" id="no-results">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <p>No commands match your search.</p>
+  </div>
+
+</main>
+
+<script>
+  const searchEl = document.getElementById('search');
+  const statsEl  = document.getElementById('stats');
+  const noRes    = document.getElementById('no-results');
+  const pills    = document.querySelectorAll('.pill');
+  const sections = document.querySelectorAll('.panel-section');
+  const cards    = document.querySelectorAll('.cmd-card');
+
+  let activeFilter = 'all';
+  let searchQuery  = '';
+
+  function update() {
+    let visible = 0;
+    const q = searchQuery.toLowerCase().trim();
+
+    sections.forEach(section => {
+      const panelKey = section.dataset.panel;
+      const showPanel = activeFilter === 'all' || activeFilter === panelKey;
+      let panelVisible = 0;
+
+      section.querySelectorAll('.cmd-card').forEach(card => {
+        const searchText = (card.dataset.name + ' ' + card.dataset.desc + ' ' + card.textContent).toLowerCase();
+        const matchesSearch = !q || searchText.includes(q);
+        const show = showPanel && matchesSearch;
+        card.style.display = show ? '' : 'none';
+        if (show) { panelVisible++; visible++; }
+      });
+
+      section.style.display = panelVisible > 0 ? '' : 'none';
+    });
+
+    noRes.style.display = visible === 0 ? 'block' : 'none';
+    statsEl.textContent = `${visible} command${visible !== 1 ? 's' : ''} · 7 panels`;
+  }
+
+  searchEl.addEventListener('input', e => {
+    searchQuery = e.target.value;
+    update();
+  });
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.dataset.filter;
+      update();
+    });
+  });
+
+  // Keyboard shortcut: / to focus search
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.activeElement !== searchEl) {
+      e.preventDefault();
+      searchEl.focus();
+    }
+    if (e.key === 'Escape') {
+      searchEl.value = '';
+      searchQuery = '';
+      update();
+    }
+  });
+</script>
+</body>
+</html>
