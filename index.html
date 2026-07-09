@@ -378,13 +378,13 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">32 commands · 8 panels</div>
+    <div class="stats" id="stats">33 commands · 8 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">32</span>
+      <span class="pill-count" id="count-all">33</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
@@ -424,7 +424,7 @@
     <button class="pill" data-filter="help">
       <span class="pill-dot" style="background:#ffca28"></span>
       Help
-      <span class="pill-count" id="count-help">1</span>
+      <span class="pill-count" id="count-help">2</span>
     </button>
   </div>
 </header>
@@ -1026,7 +1026,7 @@
           </div>
           <div class="cmd-name">Grid Builder</div>
         </div>
-        <div class="cmd-desc">Define and place a full rectilinear structural grid at the model origin. Specify column spacing, bay counts, and grid naming from a single dialog — no manual grid line placement needed.</div>
+        <div class="cmd-desc">Define and place a full rectilinear structural grid at the model origin. Specify column spacing, bay counts, and grid naming from a single dialog — no manual grid line placement needed. Live building area preview updates as you configure the grid; Imperial mode defaults to 50′-0″ bay spacing.</div>
         <div class="cmd-footer">
           <span class="tag">BaseBuildingTools</span>
           <span class="tag tag-module">Model Setup</span>
@@ -1109,6 +1109,119 @@
 
     </div>
   </div>
+
+  <!-- ── Help ── -->
+  <div class="panel-section panel-help" data-panel="help">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <span class="panel-name">Help</span>
+      <span class="panel-count">2 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="command reference documentation online help" data-desc="command reference online documentation website browser open help site">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Command Reference</div>
+        </div>
+        <div class="cmd-desc">Opens the PDG Revit Tools command reference website in your default browser. Provides a searchable, filterable index of every command in the addin collection.</div>
+        <div class="cmd-footer">
+          <span class="tag">HelpTools</span>
+          <span class="tag tag-module">Help</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="feedback form bug report suggestion" data-desc="feedback bug report feature request suggestion airtable form browser open">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Feedback</div>
+        </div>
+        <div class="cmd-desc">Opens the PDG Revit Tools feedback form in your default browser. Use it to report bugs, request features, or suggest improvements to the addin collection.</div>
+        <div class="cmd-footer">
+          <span class="tag">HelpTools</span>
+          <span class="tag tag-module">Help</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="no-results">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <p>No commands match your search.</p>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  const searchEl  = document.getElementById('search');
+  const pills     = document.querySelectorAll('.pill[data-filter]');
+  const sections  = document.querySelectorAll('.panel-section');
+  const noResults = document.querySelector('.no-results');
+  let activeFilter = 'all';
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      activeFilter = pill.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  searchEl.addEventListener('input', applyFilters);
+
+  function applyFilters() {
+    const q = searchEl.value.toLowerCase().trim();
+    let anyVisible = false;
+
+    sections.forEach(section => {
+      const panel = section.dataset.panel;
+      const panelMatch = activeFilter === 'all' || activeFilter === panel;
+
+      if (!panelMatch) {
+        section.style.display = 'none';
+        return;
+      }
+
+      let visibleCount = 0;
+      section.querySelectorAll('.cmd-card').forEach(card => {
+        const name = (card.dataset.name || '').toLowerCase();
+        const desc = (card.dataset.desc || '').toLowerCase();
+        const show = !q || name.includes(q) || desc.includes(q);
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+
+      const show = visibleCount > 0;
+      section.style.display = show ? '' : 'none';
+      if (show) anyVisible = true;
+    });
+
+    noResults.style.display = anyVisible ? 'none' : 'flex';
+  }
+}());
+</script>
+</body>
+</html>
 
   <!-- ── Help ── -->
   <div class="panel-section panel-help" data-panel="help">
