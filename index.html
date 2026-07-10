@@ -353,6 +353,13 @@
     .header-controls { flex-direction: column; align-items: stretch; }
     .search-wrap { max-width: 100%; }
   }
+
+  .cmd-icon-img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+    display: block;
+  }
 </style>
 </head>
 <body>
@@ -448,11 +455,7 @@
       <div class="cmd-card" data-name="manage sheets" data-desc="create delete rename set title blocks revisions sheets">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/>
-              <line x1="9" y1="11" x2="15" y2="11"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACsklEQVR4Ae3BoU5jWQAA0HM3iCcrKvoB/YAmYCfpqvIBeBBMwNVA8kjbtAhCE4rAgZqKxY1ALAmrqBixJLNJP2AEsgLx5BNNZptckkJegULG7Z7jPy/4uA0ci/Zx5QOC96vjBGue+xsHGHmHYHk1HGNdNEEHK+iiIvoTHYwtIXhbFS1siTKcYoBclCBFEyVM8QcOce8VwcvKaGEXCXJcoIfMYmW0sYMEOc5xiMwCQVGCFE2UMMUleri3nCra2BRlOMUAuSeCuRVso4uK6C+kGPuYGvpoiCboYIipmWDuFnXRP9jDyK9RxwCrohF+N/ObuWDup1/vp7ngUTC3gm10URHd4ABjH1PDMdZFE3QwxNRMUJQgRRMl0RBH+GE5VbSwJcpwigFyTwQvK6ONHSTIcY4jPFisjBZ2kSDHBXrILBC8rYo2NkUZztBHLkqQookSprhED/deETz3Bdf4qqiGPhqiCQ5FXVRE12hjrGgDDXz2KJir41b0HfsYKapjgFXP3SHFSFEdJ1gTfcI3M8HcCrbRRUV0gwOMFW2gL9rDlaIajrEumqCDIaZmgqIEKZooiYY4wg/LqaKFLVGGUwyQeyJ4WRlt7CBBjnMc4cFiZbSwiwQ5LtBDZoHgbVW0sSnKcIY+clGCFE2UMMUlerj3iuC5L7jGV0U19NEQTXAo6qIiukYbY0UbaOCzR8FcHbei79jHSFEdA6x67g4pRorqOMGa6BO+mQnmVrCNLiqiGxxgrGgDfdEerhTVcIx10QQdDDE1ExQlSNFESTTEEX5YThUtbIkynGKA3BPBy8poYwcJcpzjCA8WK6OFXSTIcYEeMgsEb6uijU1RhjP0kYsSpGiihCku0cO9VwTLq6GPhmiCQ1EXFdE12hhbQvB+dQyw6rk7pBh5h+DjNtAX7eHK/z7gX5OmuB7mQADDAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Manage Sheets</div>
         </div>
@@ -466,9 +469,7 @@
       <div class="cmd-card" data-name="set view phase" data-desc="phase views sheets floor plan ceiling">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACo0lEQVR4Ae3BT2hbdQAA4C8vOQTJYUIPEYpUVrQHkR4Kq2xIBdEWeqgaimJE0Skig6U42WTePMhU6EAvIsPhH7pDZB1MUHQysdMe9KAMrVCk1jFyKBIhYA+PYuE3iHnvxWRdwcu+z03/t7zuJjCOy27MQUS4KkNBtgoWUMCX2LAzQ3gPLTyJRQl5aY/hYxQwh690GsYsnsIsZjCBO9DEn9qauBX3oYJf8LN/KehUw7xgDie1zeA4xvy3ZZzAoqAmOIwFQd01OW2H8LZgDicFg/gQE4ImPsVlNASDGMVDKAnO4zk0BMfwOmI8jrptOW0r2Is5vCMYx1mU0cAr+AixbAUcwlGU0cD9WBHUMI9LOGBbTtsISvheMIJvMIDPUUFLf8qoYz8auBdrggmsYc22vLYNXBUU8QWGcA4z2JQ2jNvR0KmFD7Af9+AA3scW1tB0TSTbEdyNH1FFLNt5fIeStBgVrGIML8gQSSvhJUENLd0VUcSAbE28LDiOgoRIWgV7cAEX3bhF/IAypiVE0iYFdbtnUTApIZI2Krho9ywLxiRE0u4SbNg9q4IBCZHuNvQWCw7boUhaSzCkt6fRQg3zuisJYgmRtF8Fg3pbwhRaqGFethHBqoRI2pJgWn+WMIUWanhL2qRgWUIkrS54AkX9WcIUWnhWpz14VFCXkJe2jodxJ/7Ct/qzjrM4hQ1tr+JBfI03JESyHRG8hnH9W8GKtgdwVHBMhrxsv+E2jGMaF9BwfcZxDrfgBE7LkNfdZ9iHUVTxB37SWwHPYwElfIIXsSVDXndbOIO9GMMjmMbfWMemTgOYxSkcRAHv4hnEusjpTxVvoiyIcQVXBIMY0vY7aljUQ07/iqiiin0o6rSJSziNM4j1IWdnihjGgKCBVcRuuk7/AMwXnM6CvLVEAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set View Phase</div>
         </div>
@@ -482,11 +483,7 @@
       <div class="cmd-card" data-name="create rcp reflected ceiling plan" data-desc="ceiling plan floor plan crop region room tag ceiling tag view template">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"/>
-              <line x1="12" y1="22" x2="12" y2="15.5"/><line x1="22" y1="8.5" x2="12" y2="15.5"/>
-              <line x1="2" y1="8.5" x2="12" y2="15.5"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABZUlEQVR4Ac3BsWpTUQAA0JPbO0QXIzgELBgwk4sObn3oRwiCU1MsuLoITv6E4iIlEUQQHBwcXQopjuIeqEI6dHubDoEauA+SSMNTyU08x6Y15LONKJlg7BxRPkNcM1PiPZ6gVAnyO8EJWtjHF7RUtuTzGC3cxDMc4A5u4DI+mgrWZ4wHknsqwXqNcIoraJsK1u+npGkq2LAo6eBYHm18s0SwYdGi7+hYjR9oqhFsWLBcFz0UMgqWK9DHvoyCers4k0mwYVG91+jJJKh3HT2ZRPUKFBjIIKo3wpFMonpH6Pl3nyUl3mHLnOjvDLCLPQxwJmmo18Ijv4nq7aAv2ZE8xF0zfRxgaOaCmYj7eIlL5kT1uuhaVKAw08Mhhs43wVtcxCtzouWG2PPnhup9kpQoTUXLjTCyWrckX1GaCtbnNp5LPqhEi67i2Oo10ZYc4oVKtCiiI49TvMFTTFQakoht+Uww9j/6BUP4PkXr4zxjAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Create RCP</div>
         </div>
@@ -500,10 +497,7 @@
       <div class="cmd-card" data-name="create existing demo plan existing demolition phase" data-desc="existing demo plan CD22 view template duplicate sheets phase preceding">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>
-              <line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAByklEQVR4AdXBMUhUYQAA4O/eveEGBwepIxycWoRoaIgGqbWpUiiHyCCaChxqiAY1aLahpUmDooYDCVqCwEaHBmmwpaELhwu0PDCUfFHBf/B4aXfvXcOj71O2iuLqqDnYLloKqMgaRox1JLJu4C7qumvhPh7ab0TwUUdV1jvMYAFbUlN4hAF8xibaaKONNtr4hiM4iyZWZX3FNOZ0xFJ1HBY8w67UccFlPNHdOSxhHlccrI6W32KpGmqCkw72XG8vBYM47WA1HbFUCy3UMYmW1LIg0VsidUbWsqClI5baxVMM4TU2/N0AhmRtYFvWG1mPBbs6Ylm35DOBBVlXsai7KX+I9GcbTakmtvUh0p8GRqRG0NCHSMki+SSCeb3NCxI5VOXzHhdwCofwBcO4JniFYdzBTSSYxJoeKvKbwHNUdfcDl9CQQ1V+axjFKPawhwQJEvxEFQ3ck1OsmB3BdSzKmsICdhQQKWZDULffkGBDAZFiVgTjiKViXBSsKKCqmE8YxzGMYRNHMY8xfMBtfJdTRXEnsIRhWes4j7cKqOjPIKYxI5jDA2wpKNKfLcxKzWJLHyIli5QsUrJIySIli5QsUrKqf9PEC6z6X/0C779lf1RzQ+8AAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Create Existing &amp; Demo Plan</div>
         </div>
@@ -517,11 +511,7 @@
       <div class="cmd-card" data-name="set view titles viewport title label position" data-desc="viewport title label sheet position all sheets">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
-              <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
-              <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABiElEQVR4Ae3Br2uUcRwA4GfsGyw2wwWD4Q2nDFwwviAG4cCyYJqCG/hHCAsi3Jqg3fC+L2xgGDiwDEyDtwoKFxbeMMHwhrUZj6HwGdxON3+M4yzv8/jfFoQe+ubrAG0SBijM1zrKJLTYN1+tzg8LQoZcKIUcGb5hRxighwa1sCbUaNDDQNhDiwy5UDojCTkKoRSe4gm+YEd4hruoUAuFsI4GfRTCPbTIUQilM5LQoDKtFo5M7OEQtYlKaIQWldAKDSqdTqfTOcei0MMd3MCh0McSevgqLKOPKzgybYAcI5z4S4vCQ7zDGl4IL/EK9/FaeIvnuIpd03IUWMUxRjjxB0losW/aAfbRmvgkHLhYhgIb2MQWxi6wYHbWUOAjEm4LDTaxhbGfLJqdZazgAwb4jJu4hRWs4hgjnDiVhAy5yymdbxcjvEcfGd7gOoZOJSFH4XJKv8qwgcdIGGMbQzTOSEKDymw8wCMkjFFhiMY5klCjNhvXMEaFIRq/kczWGNsYojFnS8h0/tF3HhViUipcelgAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set View Titles</div>
         </div>
@@ -535,10 +525,7 @@
       <div class="cmd-card" data-name="create working drawings floor plan views levels" data-desc="working floor plan views levels drafting">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC2UlEQVR4Ae3BTWhbBQAA4C95T6kaoWwgAUEGonQZVBDJFJ91EQ8LluHPo6ZOPHkQRJDdPIjs6kXBm4LgQUKroT1YQrHSjkZQmCdBgnjQusJDgnh4tCIhOniFtFmbptKe9Pv85+Uc7jUUHSzF++j6F0KHW8Mqig52HrPoOqLA4Tr4Cq8ij0XM4RquYQJllLCAHkJcxYe4gjP4DlsGBEaT4C5E+BpXsIY1LCFGGSV8iWW8jFMYx6O4hE/wl10CoxvDS9jGx/o6WEKMMl7HA0hQxUe4gAfxK67bJW90qUzoVm1UsIW78TeqaOEbzMkUDcgbXSTzk/218RS2kcMHGEOI8zIdAwKjOYNPcTveQdv+NrGCy7gfF1DFNG7gDWzZJW80n6OAn7FouG9RwTYivIAUs+gYEBjND5jBPRjHsuE2sYLLuA1reBc9AwKj2cA6ZjCF02gabhMruIRJlLCAnl0Co9vAOmbwBCYxb7hNfIEYZZSwgJ4dgaP5Hc/gXpzFJOYN18ESYpRRwgJ6bgqMroAmHsNvuAMlTGLecB0sIUYZJSyglzeaApqIkOBJPIsenkfD0eTsCByugCYiJKigjR/xPV7EWZzDZ/Y3gVUU0UANXTcFhiugiQgJKmjLhLiKksw5jGPZXhNYRREN1NC1I3CwApqIkKCCtkyIOmKkeAuPYwrjWJaZwCqKaKCGrl0C+yugiQgJKmjLhKgjRooq5rCOGUxhHL9gFUU0UEPXgJxbFdBEhAQVtGVC1BEjRRUtfRGaKOBPjKGBGrr2EdirgCYiJKigLROijhgpqmjZawPrmMGdaKCGrgME+kI0MYUEFbRlQtQRI0UVLfvbwDoCvIKuIXL63sR7SFBBWyZEHTFSVNFyTPL6pmVm0ZYJUUeMFFW0HKO8g4WoI0aKKlqOWaDvFC5iGqfxNi4iRRUtJyDQdx0P4WFEuA838BxaTkjOrZ7GI0iwiD/87wT9Ay+yvOARpJbRAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Create Working Drawings</div>
         </div>
@@ -569,11 +556,7 @@
       <div class="cmd-card" data-name="create room elevations elevation builder" data-desc="room elevations north south east west elevation markers 4-view set room name number project north orientation">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <line x1="12" y1="22" x2="12" y2="9"/>
-              <line x1="8" y1="13" x2="12" y2="9"/><line x1="16" y1="13" x2="12" y2="9"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACNElEQVR4Ae3BP2gVdwAA4C93Z10yOAQ5sJQOGW7IkMFBwcErWh6hlBZTkCAkQkahjhkCDhLa2a2D9KKgQSgFi7zCC95UBBeXDCdKXARv8A+UgCASDfwElffu/UkKDvb77NE4xu1BbPcm0cEiOnhuF2K7cwJtfI2DmMM9bBpRbHTncBXjuIUHmMYcXuCuEcSGl+A3LCPCChZxDftwHDP4Em1sG0JsOClu4QdsYR6XvHcb99HCEXyDNrYMEBtsGiWm8Bgnsa7bBtr4DlM4jRK1PmL9ncafmMA/OImHmtW4jqOYwhk8woYGsWYXcQlf4DJm8a/BtnAFh3AEs0hQ6iHWbRx/YBGv8TOWsW1427iJZ/gWx3EYf+GVD8Q+NokOjuEpfsSa3buLO5jBNL5HB8+9E3vvBDr4SrCIm/ZuE49xCgcxh3vYtCMSnEcbB/BSsN9/Z7/gJSbQxjk7IqS4gAQruKG3FEsGW0KqtxtYQYKLSBPU+AkTWEOhW4oSmeBXvS3hF8wjR63bMjbwFHUkWMea3lKUyFCh0KxAhQwlUr2tYd2OSH8pSmSokKPWrEaOChlKpPpINEtRIhNkeGI0GUqsahD5xBLNauQokaFCjlp/KUpkqJCjpUGkvxo5KmQokWqWokSGCjlqfUQGq5GjQoaWZi1kqJCjNkBiODVytFBoVgj+Rm0IieHVKAxWGEHkE4v873M3ptsbwSoWBAXmBWOCBfwuOItC8EawigVBgXnBmA9EPndvAWRyhfsOV12nAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Create Room Elevations</div>
         </div>
@@ -587,11 +570,7 @@
       <div class="cmd-card" data-name="selection elevations element selection elevation" data-desc="elements selection bounding box elevations north south east west marker offset CD32 interior elevation template">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="1" stroke-dasharray="4 2"/>
-              <line x1="12" y1="3" x2="12" y2="21"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACY0lEQVR4AeXBP2hUdwAA4I/3fmoKN3Q4JNBQOmRrhitkiP8gFC0iUhqqIEFwyWbAiCc6BDqkwcJZKOLiUBSF5hBKqa0cctIMRgwiiBCHoESHU26ICiWglDS08IS03L/3YsTB7/OGcsh5A7G160UVI6jiuTWIrc1OVPAJNmMYd7Ego1h2o7iEHK7iAQoYxgvclkEsvYBzGEeESYzgJ2zAIPagBxWsSCGWTjeu4iss4RDOWPUH5rEbA/gcFSzpINZZAdPoQw27cF2jOVSwF304gGnUtRFr7wB+QR43sQsPtVbHFLagDwfxCHNaiLU2gTPYiB+xD3/qbAkX8REGsA8B05qINcrhZ4xgGUcwjhXpreAKnuELDKIfv+Ev/xH7v15UsR2LGELZ2t3GLexBAV+iiudei63aiSo+lhjBFc3lsBUF5PBUawuo4WtsxjDuYsG/gsQYSgh4iQ+wSaMuTGAUXVbVcBxlzW2SeIk8KjiKsxG68Q0CJnFZc12oooiAe7iGJ+jBFIrau4xJBEygO6CO/cijjAua+xbbUccQZiUCxlBCCbOY0do45rCIepC4rr0cDmMZQ5i1ahmn0Y1jKGJGe2WvRdLpRxfuY1ZzFyS2ySCSzocSda09lsjLIJJOTeJTBM31S8zLIJLOHdTQgzGNAk5J/C6DSHrHJUoooQ85DOIGBvA3fpBBkF4ZPSihiKJGMUZxUkqRbE5jB37FM4l5fI/9WMYJ7JZSkN0MZjTXi1O4hM9Q00FkfX2Ha8hjCkEHkfV3EDUUUNBBsP4WMYRXmNNB8HbckVLkHQtaO4/z3rLI++4fSlCK5vbfZYsAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Selection Elevations</div>
         </div>
@@ -605,10 +584,7 @@
       <div class="cmd-card" data-name="rotate crop region plan view angle" data-desc="crop region rotate plan view angle degrees custom shape boundary">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="1 4 1 10 7 10"/>
-              <path d="M3.51 15a9 9 0 1 0 .49-4.95"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUUlEQVR4Ae3BLW9TUQAA0NPbKxCPZAkV+JEAY3JyCSNB4JioAMVwCET7M5aRrBbFCIrwYaCOhCBwCORIiq+omEAshBDEE6/d60jv7bIXEs7xL7qMj7jmDLSl6eATNtDFEBNLaEvzEzexhgJdDDGRqS3Nb7zFDayhQBdDTGRo+buILdzBJZWIe4hKY9zCoUQtp9vAM6xbzBjXcSRBNN8W3qGwuF0cSRTVreAVCqWXeIIvKj3sq/QxkCGqe4yO0lM8MquHfZU+BjIFddtKP9Az6wr2VPoYWEJQd1XpM47NGuE+fqGPgSVFdYXS2Hyv8RUjZyBKt4278rzBe1OidC9QyNPFRVOCdIV8hROifM+xYzEHeGCOqO6h0sg5iOoOnKOgYUHDgoYFDQsaFjQsaFiUbxU7FrPqFFG+TWxaUpDuu3zfnNCSroPbuCDNMT5g4r8pfwAlYDUSln9N4QAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Rotate Crop Region</div>
         </div>
@@ -622,10 +598,7 @@
       <div class="cmd-card" data-name="reference plan creator floor plan callout elevation view" data-desc="reference plans callouts elevation views link navigation floor plan">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACx0lEQVR4Ae3BMYscZRgA4Oc2XyEyhY1wcIXYBfwBaRaiYOGC5Vfs/ALLzHQWgtdZzlwvWE6KWbBbBYsrtoiFpXCNEMFAwHYQi++IgQ28c8m6SZGYxufxtp34dx/j0k2neMfr8QdKcliHBi164T7uej0+xMPkRR0ae5293t5j/C6c4Ay3cI1HeCK8j3fxBI9wjTMkzyQ3dWjc1NnrsRYSBmRMWGEnNOhQUGO09xAfeGYhnKPBhB/t/YyCDo2QMCBjwgo7oUGHghqjcMvMQriP37DCA3s/oMavuG8vYUDGhBV2QoMOBTVGIePMTBKucBsFnwojvkdBwoCMCSvshAYdCmqMQsaAEzMLNxWHFSQMyJiwwk5o0KGgxihkDEj4y8zCq0kYkDFhhZ3QoENBjVHIGJDQ4k8zCy+XMCBjwgo7oUGHghqjkDEgoUXvOclxCQMyJqywE77ENyioMQoZAxJa9A5IjruHChNW2AkdGhTUGIWMAQkteuHEzMJxFSassBM6NCioMQoZAxJa9MISZ2YWjpuwwk7o0KCgxihkDEho0QtLbHHLzMJxF9gJHRoU1BiFjAEJLXphiS0qXJtZOK4IHRoU1BiFjAEJLXphiS0qbPDIzMKr6dCgoMYoZAxIaNELS2xRYYM1nphZeLkODQpqjELGgIQWvbDEFhU2WKN4TnLcFzhFQY1RyBiQ0KIXltiiwgZrFAckx52ioMYoZAxIaNELS2xRYYM1ivAAD/G3p5LjCmqMQsaAhBa9sMQWFTZYo+AUn+NbrM0kx11gFDIGJLTohSW2qLDBGgUJP+EjVOjNLBw3CRkDElr0whJbVNhgjWKv4BwFHRozyXF3cY4K95Bwhfdwbi/hHipMuMJXXvQL7qCz13vqxGHn+Nqb9Qkuk8MuvX538Jm9C1x66sR/Y4ktKlyg8czCm5fwHSpcoPEW3Ma5/x3wD8WM0nZQvCmqAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Reference Plan Creator</div>
         </div>
@@ -639,12 +612,7 @@
       <div class="cmd-card" data-name="create elevation sheets pack room category layout" data-desc="elevation sheets room category 24x36 row fill pack layout all elevation views sheets">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/>
-              <rect x="6" y="12" width="5" height="5" rx="1"/>
-              <rect x="13" y="12" width="5" height="5" rx="1"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABkUlEQVR4Ac3BIYiTYQAA0HfffWGK4ISFgQMXDMPiBYPhsGowHCiCaRMONBgEEUxmg+3EIqLHiSAKO9AiaBAUMYjYD86DHXhtTcNAB99gm9y8bbd/8z2zNic7JURJCw27iLLzAcd0NfESt9DUEWRvG9vIYxlfkdcxLzs3kMdJ3MEjnMEJHMFrbcH0NHBZckFHMF0b2EEBRW3B9P2S5LQFMxYlZWzKRhHfDRDMWNRvC2WT8RM5ewhmLBjdIhZNSDCaCl6gjooJCIZXQB1FFPAKRfsUDCeHOir4gs84jjoO2YdgOGtYRAPnsYQNnMYaojEFe7uHi5J3qKGGj5IlrBhT9G/XcVNX1e6uYQt3jSgarIgFrKIqeaPfWckqKiihYQTRYD+wLKlKzun3W1Iz2CdJE88xr0c0PXlc9ZdoNI8N74CuiEt4gMN6RKOpGU8Lz3AQD/WIhnPFZLyVNNHUFg3niclYkHxDU1swPaewIlnXEfU7ik2Tl0NR8h73dUT9IsqysYOnuI2WjjlJREl2Wmj4H/0BVrNESPEQh1MAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Create Elevation Sheets</div>
         </div>
@@ -658,12 +626,7 @@
       <div class="cmd-card" data-name="set level head extents level line crop boundary CD32 interior elevation" data-desc="level lines extents crop region boundary interior elevation view template CD32 trim 1/4 inch bubble">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"/>
-              <line x1="5" y1="6" x2="19" y2="6"/>
-              <line x1="5" y1="18" x2="19" y2="18"/>
-              <circle cx="19" cy="12" r="2"/><circle cx="5" cy="6" r="2"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVR4AeXBPUuUAQAA4Of9sCFulBCKaHA86IYGgwYpjRCJAgM5Am+4MagfIDSIf8CtITwNSgIRLLnhJKcIXGxwicKWhhtMIQ6CCK/gBC/sPj17h57HCaWQcgKR7g2ihDxK2NOFSHdGUMQlnEMWW9jRoUjnHuAZUljDR2SQxT42dSDSvhhPMI0Qs8jjOfowjDFcQBEH2hBpzwDWcAcVTGHOkTf4gFsYwnUUUdFCpLUMNpDGF4xi3XHbKGIcaUxiA2VNRJqbxAr68Raj+KSxMl7gKtK4j8/Y1kCksRnM4QyeYgLftFbBIs5jCBOIseEvIselsIw8fuIhpnGgfQdYxVfcxDCu4BV+qBP50yBKuIZd3MWS7m3iHcaQwW2UsOdQ5MgISrioJo9VJ7eDFdxAGllsYcdvkZpHWMBZfEcfXuO93tjDIi4jgyz2sRliAI8RYxYvnY4KxjGLGDMYiFHGPfRjCQWnaxrb2EU5VrPu31pyKJSwWO9VNReoE0pYrPcCHQglLNZ7Vc0F6oQSFuu9QAdCCYu1L4d5jS0gh6rmAnVCCYu1r4CC1gIdCCUscFwBU44EanKY19gCcqhqLlAn9L/7BdGtXwPTQ7oPAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set Level Head Extents</div>
         </div>
@@ -696,10 +659,7 @@
       <div class="cmd-card" data-name="all assembly builder wall floor ceiling roof CD23" data-desc="all assembly builders at once wall floor ceiling roof CD23 sheets drafting view detail groups type mark combined">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="9" height="9" rx="1"/><rect x="13" y="3" width="9" height="9" rx="1"/>
-              <rect x="2" y="13" width="9" height="9" rx="1"/><rect x="13" y="13" width="9" height="9" rx="1"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAjUlEQVR4Ae3BuQ3CMAAAwLPlHUjhkRiDholSsAYjQcEUpkhlRZjPKELynWEYhq0FbXvMyGoXHHH2pajthGwtY9ZB0jZZBLWCrINoY0k/xdoFR5w9EP1Wxqwh6SdYK8gaktcUP5L0sceM7E3Ja4JaUTth8oGkj8kiqBVPRBtL+rhhh+JNUR8HXA3DMPyjO1gTEqroWG7OAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">All Assembly Builder</div>
         </div>
@@ -713,12 +673,7 @@
       <div class="cmd-card" data-name="wall assembly builder wall type mark detail group CD23" data-desc="wall assembly builder CD23 sheets tagged wall types type mark detail groups drafting view place">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="1"/>
-              <line x1="3" y1="8" x2="21" y2="8"/>
-              <line x1="3" y1="13" x2="21" y2="13"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUElEQVR4Ae3BIWsbYRgA4IcjImKisMAKO8jBKgILrLJiYtCJ/oz+k+2nVUZUTJxI4AIX6OCmeiKwE4NMvOKj8F1VRMU9j8lkMnmr/qKR9wsnZ1LI+4OZvAscnEkhr/e6wZkU8noshW/4ie/Ce3TOpJDXSe7xA/fCO/SSZzwIC5xwwkJ4wLMRhbxBmKHCHpWkl+xRCmvJSqiwN6KQ1wolKmywxELoJA0+CivssMNa+IDGiELeIFligxIXwiBpMccFVtiiwQoLzNEaMZPXCdfCRqiEVtIIJVaohTUuhcaIQl4vXGPAI474KgySVijxBTVqfEYpNEbM5PVChZ2wQyV0kq1whUvUQokroTFiJq8TblALDW6EXvKEf7gTtpI7DHgyopA3CEtshRqfhN5Le9zigCOO+I1bHLyikNcKc9TCFjOh81KDObaSGnM0JpPJ5C37D44oVhfFOR6wAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Wall Assembly Builder</div>
         </div>
@@ -732,12 +687,7 @@
       <div class="cmd-card" data-name="floor assembly builder floor type mark detail group CD23" data-desc="floor assembly builder CD23 sheets tagged floor types type mark detail groups drafting view slab">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="14" width="20" height="7" rx="1"/>
-              <line x1="2" y1="10" x2="22" y2="10"/>
-              <line x1="2" y1="6" x2="22" y2="6"/>
-              <line x1="2" y1="2" x2="22" y2="2"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAZklEQVR4Ae3BsQ2AMAxFwfetDEHBSOxHwbCmoIgoSIIU5ALfkVJK0USf0yaqDdiBlUo0FOY6gIUXCuNE38JFDDKCFeZw7pxKNBjBRJ/zTNw5FzHICFYYJz5gBDOCGcGMYEZKKf3dCbH1BvADdF1OAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Floor Assembly Builder</div>
         </div>
@@ -751,12 +701,7 @@
       <div class="cmd-card" data-name="ceiling assembly builder ceiling type mark detail group CD23" data-desc="ceiling assembly builder CD23 sheets tagged ceiling types type mark detail groups drafting view suspended acoustic">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="7" rx="1"/>
-              <line x1="2" y1="14" x2="22" y2="14"/>
-              <line x1="2" y1="18" x2="22" y2="18"/>
-              <line x1="2" y1="22" x2="22" y2="22"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAdElEQVR4Ae3BsQ2DMBAAwLPlHXDBSIzBThTMh8QYKShDHCUBWZH+Tggh9Ja0TVgwOpf8qGhbUd2oaKsOyU2yzoprTFgwepY0FNdYUX2huEZ1SD6UdZZ1lnWWdZZ1lrTtGLyWHHYMziUNWduMzXszNiGE8I8ev0wIT9WgL2wAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Ceiling Assembly Builder</div>
         </div>
@@ -770,10 +715,7 @@
       <div class="cmd-card" data-name="roof assembly builder roof type mark detail group CD23" data-desc="roof assembly builder CD23 sheets tagged roof types type mark detail groups drafting view membrane low slope">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="3 12 12 3 21 12"/>
-              <rect x="5" y="12" width="14" height="9" rx="1"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAn0lEQVR4Ae3BMU4CQRQA0Dc/W1B6AEq4B3fA0sTGQk4EBQ01jYWX8AYWltJ5BJO12IpAYGdnk43JvKeqqmpqyX2t676xwbsCYbg5tgo1+kvOtZgrFCbWGE/ruuSGMLFGf61LJ5eSDGG4E14VavSX8IgjvrA0gpDnDT9YYGUEIc8vDjovRhDy7XXWeFAo5PvEB2Z4UigMs9N5VlVV9d/9ARMjEyIxVKfhAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Roof Assembly Builder</div>
         </div>
@@ -805,11 +747,7 @@
       <div class="cmd-card" data-name="schedule editor excel import export spreadsheet" data-desc="edit schedules spreadsheet excel import export">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
-              <line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABIElEQVR4Ac3BsU0bYRgA0OfTV9wGXJHC7IAUd2aADACdLSFlkDQUGSBFJJwKD4EU6IKUzBCnMxtc4YKCwsD5l76TOC7vGdtEXoNaTouthJC3xlzOHU4lTHSt8VFXgxoPaB1W4wgttrruceaZ0NVgquwMtw47xU/UmOr655VQdo5f9laYI5SFJ3dY2Jvh2gGhbIuNvVvM8QUfHPbZkxts7E0VhLxLfMIMM2V/8FVSyGsxwwVOEF7a4Te+Yycp9LPDN2+oMrLKyELeQj8rCSHvSj8rCSHvhwGEvIUBVEYW8q70s5QQ8hb6WUoIeUsDCHkrA6iMLOT91c+xhJA3NYCQd2wAIW9jAJWRVUYWyq7Rehu1glDWeAcTXQ1qw2ix9T95BLkRLHQAnvphAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Schedule Editor</div>
         </div>
@@ -823,11 +761,7 @@
       <div class="cmd-card" data-name="assembly view builder detail groups drafting views type mark" data-desc="assembly view builder sheets detail groups type mark walls floors ceilings roofs drafting view place groups">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/><polyline points="12 18 15 15 12 12"/>
-              <line x1="9" y1="15" x2="15" y2="15"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA6UlEQVR4Ae3BsUkDURgA4M8/b4DLBilSprHTIp0r2Cs4gVgIruAOsXMIrUxrYXGFhYUjXCEIcoWBBI5A8GnI8Qrzffb+vQOdCvc4QdKPFo84xYeFgc41LhD6ExjjE08Wks7I0jnu9OMMM4ythMJCYaGwJG+COSqbNZii1rnCDY7x6gdhN1rrJqhwJCPJqzHUk1BYKCzJm2COymYNpqhtIexGa0tJXo2hnoTCQmFJ3gRzVDZrMEVtC2E3WutqNHiWkeTVGPqbW9z6hVBYKCwUlnTeLc0w0683KwOdFxxihNCPFg+4xJe9vYVvnFAlQj78+8sAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Assembly View Builder</div>
         </div>
@@ -841,11 +775,7 @@
       <div class="cmd-card" data-name="door host wall type mark assign parameter" data-desc="door host wall type mark parameter assign all instances">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-              <rect x="9" y="14" width="6" height="8" rx="0.5"/>
-              <circle cx="12" cy="18" r="0.5" fill="currentColor"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUUlEQVR4AdXBIYsUYQAA0LcfX3PCoAgHZzBs2LDgiBMMxovGK4Ig/oLTYNbrggsGjdc1KCt6NoOCYcP8gAU58JKLXNh4QWGCDDsHMycfw73nohtj7D+MdDfBFLdxAyVy7OOZc4raTVHgFkoUyCQwUsvxFCUKZDYdY4EFKuxgDxUqTU+w0kFUy/HIP0eosECF71hpKtUKFJr2sdJB1HSMKU509x7v1J7jih6CplOc6KfCAQ6w1lMwsGBgwcCCgQXpldh1hiCtCeZ4g7taBOlsYY4tfMahFlEaGT5hjN/4gPuavmIZpfEKE7XLeGnTQyyjNF7jJi7hFz7atPRXlMY37GKOq6gw0yJI5xD31F5gR4sorbd4jDv4okWU3gwzZwgGFgwsGFgwsGBgwcCipm380E2utocHatt6ipoirusnR+6cRmoR1/STIcMaa00/ceoi+AM/VznC9oZiUAAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Door Host Wall</div>
         </div>
@@ -859,12 +789,7 @@
       <div class="cmd-card" data-name="door schedule fill frr fire rating wall host" data-desc="door schedule fill FRR fire rating door host wall frame rating parameters">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="11" y2="17"/>
-              <path d="M15 13c.5-1.5 1.5-2 2-3s.5-2-1-3" stroke-linecap="round"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABOUlEQVR4AeXBsWpTURgA4K8/Z3TI4BuYyUGuUMnQ4OTQ0SGbCFeKex7DNaCbg52C0M3BwbWFDhWCpNAhD9DBB+hQUOEU7G0q3FjvPYPf544GuO8OtrQ3wDYqjFBhiFf44C8ltxtgGxVGqDDUgSR7hgojVBhad4FTHGOBl3iKsXUrHGohyb5ousApjrHACZa49NtEtoc9Tfs41ELS9BonWOJSO1+xlA2xYwNJ03ubO8AbWY0dGwiFhcJCYaGwUFjoxz18xq4bQj9q7OITJq4J/XiLGRLmmLiSdOMBak0LfMMjzGUHSTfGGPuzhDlWSTdWOLLuCR7K3mGRdOMItaYJXshmmPol9OM55kiYYepK0o8zfMdHTF2T9OMMj3HuhtCfc7cIhYXCQmGhsFBYKGxL9sO/tY9aC+F/9xNNkjVlTUtzyQAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Door Schedule</div>
         </div>
@@ -895,10 +820,7 @@
       <div class="cmd-card" data-name="shared parameter creator create bind categories" data-desc="shared parameters create bind categories project parameters">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACWklEQVR4Ac3BQYhUZQAA4G9m/sMc5rCo0R4W24OIROBCHYI2d/ZWkbDgxWAFQYMNhI4JFSq7EOKhwCA6aAQLemhJRXGDwjkUhETNUsYubOBhoTlMMMk7mEzWwj/wmprZ93Yspu8zbCWDC9iNEdxH2wAKtqeM4ziGCak2vsQFLNqGgvz24VPsE7XxE8p4HGVRDa+gIYeCfMbxHUZwB6dxBW1RBYdxCmNYxTQaMpRkC7iKvbiBF1DHQ6kH+BaX8Dwm8Aw+lqEo22FMYgOzSPTXwAwaqGJGhqJsR0Vn0JKtgbOiORmKtlbGFNq4LL9F0ZQMQW8TeB1VBKwhkV8Tv2AndqGpj6BbwDxO6tawfQl2ooKmPoJu5zEn+hCLqCMxuHncwTLq/iZIvYw5tPEiPvfvmBW9g8t4FYmOktRF7MY8Lnp0G7iJL/AznsQEDuAS2jaVRLtwXnQQDzy6H1HHbVzDEmbwFH5HzaaiaFy0hsR/YxWviY7pCKIguq+3W3pbwvvyu44EYxjH3SBaF+3HCFq6VfVWRcB78muhoiOImvgKz+EEFvQ2LTWJebyLUazqbRkN0SjG0MJdm4LUAm7iFL7Bsn+qSdWQ4Bze0N80GqIPRJ/pKEmt4zE8i1mM4lfcw0nRGd2+xvf4DStYwQpWMIoKlrADH+ElNHEI92wq6BZwGm/qrSC/GqZ028AR1HQE3dp4C5/gBCbxBMoGl2ANNSyg5S+C3uo4LvWHwR1ETR9FQ1Y0ZEVDVjRkQT4JKrglv6dFG7YQ5PM2zqFqey5g3RYK8tuDMfk18YP/uz8BKzyOtwTPiLsAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Shared Parameter Creator</div>
         </div>
@@ -912,10 +834,7 @@
       <div class="cmd-card" data-name="family parameter converter instance type family editor" data-desc="family parameters convert instance type family editor convert parameter">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-              <polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB/klEQVR4Ae3Bv0tUAQAA4O/9CI6mG4r+AQcRBKeGw0JBWlziuPGGWmpxeAcXBdUQNQgN51HgEBJBcY0RNNzglFOLTh6CU5OQiCCEg1DBHZzn3XnP5NXi97mQsRpqThHLzhQWEGurGCCSnR20UEQBeTSdEMnWJlooooA8mo6JZG8TLRRRQB5NHYGuXwY7wkfcxZHBYrxFWTpLqPgjNFqMMh4Z7gnK0gt0BEabxlccYhLbeo1jHTncwJp+JTQQo45ER2i0Nawgh2X9lpHDCtb0K6GBGHUkjgmlU8Uu5lDWdQcz2EVVvxIaiFFH4oRQOvt4oK2GK7iCl9oq2NdrDA3EqCMxQCS9DcxiAtdwCwWsoqrfHg6whcQQgbMZxzpy2g4xiW1/KXI2u7iEGW3P8Mk5hP6z0NmM46GuxxhzDqGzeYUcVvAOOSwbroaaU8TSK2MOu6gixjzmUMZ7vaawgFhbxQCRdPL4gsu4j2/4iR+4jZt4g0NdO2ihiALyaDohks5rTGMVVV0bmMUEruKzXptooYgC8mg6JjLaNF7hEPPY02sN93Adq/iu1yZaKKKAPJo6Al2/nO4pXhjsCZ5LbwkVf4RGO8IHLBpuER9wJJ1AR+DfKKGBGHUkOgLZK6GBGHUkjglkq4QGYtSROCGUnTE0EKOOxACR7OzhAFtIXBjiN8mZbX2Nf19OAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Family Parameter Converter</div>
         </div>
@@ -946,13 +865,7 @@
       <div class="cmd-card" data-name="report building area filled region area level parameter" data-desc="building area filled regions area level parameters update">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2"/>
-              <path d="M7 7h4v4H7z" fill="currentColor" opacity="0.3"/>
-              <path d="M13 7h4v4h-4z" fill="currentColor" opacity="0.15"/>
-              <path d="M7 13h4v4H7z" fill="currentColor" opacity="0.15"/>
-              <path d="M13 13h4v4h-4z" fill="currentColor" opacity="0.25"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABQklEQVR4Ae3BIW8TUQAA4G8vTyCRTXYCgRgKW4lAjMB/oITJGZIJSJ9rq1AE3CDD4EhAQrIEBBKDwFXQ5HAI5ESTISpg90rh3jVZAv0+G/+9LbnrOEIlN0Gy2hhDuRp3cOwXQe4IlfWrcKghylUWtpRJSHKnuKQhOGdRmWu4i8sWPuIRplqK2nuIA2f1McANfNBC1M4uDjDHA7xGxH3cxiGuaCHKTTC33BTP8BJv/DRAHzuoUMtNMNcQ5ZLfm2LPcidWS5YI1qOPq/iMWgtBdzt4hTn2tRR008M79HAP77UUdPMUPUzwRIGg3EXcxDeMFYq6+YTnOPEvGWFk/UYYaQhyCcmfXcBjDP2dhKQhKncL+xZe4IsCUbljvEWNWqGo3Hfs6ig4Z1HuK7ZxKjdBstoYQ8vNNAS5AWbWb4Y9GxsNPwCVyj2FC9HiJwAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Report Building Area</div>
         </div>
@@ -966,10 +879,7 @@
       <div class="cmd-card" data-name="building code analysis compliance chart occupancy" data-desc="building code review chart family compliance data populate">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <polyline points="9 12 11 14 15 10"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABc0lEQVR4Ac3BsUobcRwA4M/jDw3UMeCBQiMU6ht0zNg8QAfd4jsU8gqW9hEs6hQfoIPdrnBLnyIRMihkdMiQocMJPzQ9UyXX6/dp25ZVOTqas8TMvWTVJfqac42ee0m9WyxsTsKuR5J6hyhsTg8Tj2RalmlZEhL28EolRxdzlRwdzzfDUo0k7GEijHGBocol+p5vH1M1krDENXbQwQ3mVt1iYb1dJGskYYYeCvRxhMKqQxTWm+KNNTItS8I2PmJHZYAlSg8N0LPea38hCV2cCSPkKD00skFJuMMFPiDHD5TCFaae784TkjDHEAVynKAQTjQg07IkdPEF71RGeItTlTMv8w2lGknYxlAY4BanKkMv8xOlGkmY4xgjHOAzvgvHXqb0hCTc4RxDHOAKpXCuAZmWZcIeJnivMsZXDUtCQk/I0dWwTJhhH79UjvBJwzJhiSkWKjeYa1imZZmWJfXGWNic5A+Serl/YMuqHB3NWWLmf/EbCjVI36vEKU0AAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Building Code Analysis</div>
         </div>
@@ -983,10 +893,7 @@
       <div class="cmd-card" data-name="land use analysis zoning bylaw chart compliance" data-desc="land use bylaw chart family zoning compliance data populate">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABCElEQVR4AdXBoXXbABQAwJPeBwaBAYbJFmV1d+gA0jwdwgoq6Q5xWLeoYUCggJgDROpnSV9Pqar2zv+iQuVWhcqtCpUZwjxHvca1o17j2lGvkSjcOuGzdbzg4DeljYVxX3DSu+gVrl30CtcueoXeAc8GhHlqw2rDajOFeRrDGsMaM5U2FnIP+GWZR5xNKG0s5M4orKS0sZDb4ZNlfqIzIeT2eLbMI84mhFyHF8t0EiH3ioOVlDYWcnf4apkfaE0IuXscLXNCa0LItXiyTCsRcm+orKS0sZC7xzfjah8QcneojKt9QMi9obaSkGvRWElpY2Hcd3T+jJ0RYdzeX1C4tcfOOjq8+pe8A2IoK5whhPxSAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Land Use Analysis</div>
         </div>
@@ -1018,11 +925,7 @@
       <div class="cmd-card" data-name="grid builder structural grid columns rectilinear origin" data-desc="structural grid rectilinear place model origin columns bays">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/>
-              <line x1="6" y1="2" x2="6" y2="22"/><line x1="18" y1="2" x2="18" y2="22"/>
-              <line x1="2" y1="6" x2="22" y2="6"/><line x1="2" y1="18" x2="22" y2="18"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABNElEQVR4Ae3BsWpTUQAA0JPLhWZ4Q6FDAwb6Bj/CwSHi0sEtDjpI3kdk66qTH1ELQl36AUKhHf0HHSJYaAa3DG8IaCAP7nRfOuUO7TmePHoDHOISEwztR4trfIiY4xRLLOU9Q8Rv/U6wxp28Id5gHjG29RK/5C1wglq/f7hDLe85fmIcJGv7s9YJCgsKCwqLks9YyTuydW63I5zLq3Si5K2HaexWofEAUfIe9/K+4Riv9LvBEu/kjXBpI0p+YCGvtXVrtxa38mqdoLCgsKCwKHmBWt6BrYndDjCRN9IZ4AtmyriIkius5E1R4UK/GVa4kldhaiNK5ljIm6BCo98Mf9HIqzG1ERQWFBYUFiTR/kSdAT7iDPdo5Y0RsdCvxhp/5A0xwqcBDvEVrzG0Hy2+o/Hk0fsPFFs0r8DNqggAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Grid Builder</div>
         </div>
@@ -1036,10 +939,7 @@
       <div class="cmd-card" data-name="find replace text notes text note all document" data-desc="find replace text notes active document all text batch">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-              <line x1="9" y1="11" x2="13" y2="11"/><line x1="11" y1="9" x2="11" y2="13"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABTUlEQVR4Ae3BoW4TYQAA4K8/v5ggsz1xD9CECgwChamcIZlAVFRg9gQzSN6hYnKHG8FU8gYITEVnUGvSesREk2PJNbkg/rsm+5uRsO/z3xtonWGOUrc7XGAhg6B1hVK/EnOZRK1CY6BbjVImwROL8qg1NljiCyrs9IjyKlBggku8x0qHKI+BRoEJPmGEH3iDlYQgrw0qvMZXvMQ3RAnBcdxjiluMMJUQHM89PmtMJUStLYao9Vs7zHeNVxKC1kes9Vtj5jAbjUJC1Fqg9OwfUqN2ZFE+Z5ij1O0OF1h4EKRtNQqHuUKpX4m5vShtiSEmqPQrNAa61SjtBWmVxiVOHEmQVuEWY1zjxBEEaTuc4zfO8RNTFDKKui3xFjcY4drfBh4p6rfEGB8wwxhDmUSH2aFCJbPgiUX5bDFErd/a3gv5rPAOp7qtMcMvzx78Ad6YPmIwlOpSAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Find &amp; Replace</div>
         </div>
@@ -1053,10 +953,7 @@
       <div class="cmd-card" data-name="renumber elements rooms doors windows viewports sequential mark" data-desc="renumber rooms doors windows viewports sheet sequential pick click prefix start number step wizard">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 11l3 3L22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABiklEQVR4AdXBIWocURgA4C+PERUrVkQsZMXKQKZkxMgeJKKyIqIyB6ip6gF6hJq4XmPFBCYQ0UIKK1KIWFEREdgWfhE1b96DUuj3+R81uMBC3gqXaGQk9d7iCy7kXeEz3shI6vXCg7xeuJeR1OuEQd459riXkdQ7wx4709ZY4taMpM4GS9zI64TBjKROJwzyWmE0I6nTCqO8XtiakdTphEHeqXBnxpEXC3zFxrQVXmGHZ9PWws60Z3xsvFiiw9K8tTIbeccq9DjgWt47HPBBgaRcL2zltcKgQFKuFUZ5nTAokJTrhEHeOfa4VyApd4Y9dqatscStQkmZDZa4kdcJg0JJmU4Y5LXCqFBSphVGeb2wVegIV/jk33nEazz4o8EjvqMx7QQNfpjW4ARP+GnaDk8qLHDAKK/DAdcqJPNOhTt5nTCokMzrha28ThhVSOa1wiivFUYVknmdMMg7xy98UyGZd4Y9dqatcIxblZK8DZa4kdcLW5WSvI0wyNsIo7+swSVW8hZ4j4X/zW+TQkwGdt6jowAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Renumber Elements</div>
         </div>
@@ -1070,12 +967,7 @@
       <div class="cmd-card" data-name="set metric units length area volume angle mm meters" data-desc="metric units millimeters meters area volume angle sheet length project units">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 3h7v7H3z"/><path d="M14 3h7v7h-7z"/>
-              <path d="M14 14h7v7h-7z"/><path d="M3 14h7v7H3z"/>
-              <line x1="10" y1="6.5" x2="14" y2="6.5"/><line x1="6.5" y1="10" x2="6.5" y2="14"/>
-              <line x1="17.5" y1="10" x2="17.5" y2="14"/><line x1="10" y1="17.5" x2="14" y2="17.5"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACDUlEQVR4Ae3BPUiUYQAA4OfTF3JwiLjhGxocBI8IEjGwcvAg8IKGg4b+IWhoaWgoyCEaDCwMCloKKioKgn4oCDIwziVqcEho+NwcJI5oOOEGhyMKTjivO880z8nniaxPCt1IIYV5FJGgZA0ipDCAd5rbjbPIIm1lX/EKTzFnFRHu4hwOYUK9foxjSFUJsyjgJ2LE6EGHijJeYgRzVhDQoSJWK2Ac5xFQxDM8xxeU1evAIM7gCI4hhxHc1kDQWIwXGEQZN3AdRc0tYhKTuIibOIlbOIDjKFumHTn04i2+IkYefZjDMJ5g0dqU8BozOIxebMOkZdrUipFHGgn2Ydr/eYO9+IApfwmqYuSRRoIMCjZGgqwGgqpRBCTIoGATBFUBZTxGVq0CJrRAUCtgTGMZTNlgAfetroRpW7Zs2dICkdboxBg6NfcgaI1+nLe6KNI6WcRqxRhFUPE4aJ0JtWLkEVBG8EebzREjjzQSXLGkTb0c3mO3jREjjzQSZFCwJKg3gCwGcRpvrF8/XqALCTIoWKZdvSn0oA/H0I3PKPl323EVD7EDnzCMHyp6kcNMu3q/8BILGEIfLmAXFvAdZfUC9uMSHuIgfuEOTqCkqhc5zESa68I1HEVQUUaCAuYRI0Y3OlV9xGVMq5fFe9yL/JsunEIOexA0Not3eIRvmstiOrJ2nehGCjtRQBEJitboN1RqeN8lN839AAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set Metric Units</div>
         </div>
@@ -1089,14 +981,7 @@
       <div class="cmd-card" data-name="set imperial units feet inches fractional area volume angle" data-desc="imperial units feet fractional inches area square feet cubic feet angle sheet length project units">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="4" y1="20" x2="4" y2="4"/><line x1="4" y1="4" x2="8" y2="4"/>
-              <line x1="4" y1="10" x2="7" y2="10"/><line x1="4" y1="16" x2="8" y2="16"/>
-              <line x1="12" y1="20" x2="12" y2="8"/><line x1="12" y1="8" x2="15" y2="8"/>
-              <line x1="12" y1="13" x2="14" y2="13"/><line x1="12" y1="20" x2="15" y2="20"/>
-              <line x1="19" y1="20" x2="19" y2="12"/><line x1="19" y1="12" x2="21" y2="12"/>
-              <line x1="19" y1="20" x2="21" y2="20"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACGElEQVR4Ae3BMUhUAQAA0HfeJySEHAw+TQ2CN8kRDiZCGhFCFx3UIBQU5eAogpCDQwglTW1hRJgg5HCQENkQ6BAZVOBtN2hIRPzBweEHNxzScMF1Xp5a6pLvJexdM1oRogUbiLCCdXuUsDuncQtXkLa9At5gBp/Ul8GHhPpaMY5rCJQVsYoI3xCiBW1oUrGIUXxQqw/zmAxsbwgP0IgiZjGFdyiqFaAT/biOHizhEUZQUhEqa0yqFWAWwwgwg0uYxheU/NkmvuI1JpFAJ7pwHvOIlaWRRT6p1kMMIMZVTCC2N0W8xTwuoh0Z5BAjjSzySbVO4SQu471/8x2zyCCFDHJoRRb5pFrLeIZ1+yNGDhmkkMEqLiCfdDhi5JBBCj1oQD5wcPoQqvYc4wj8EjgYPZi3CwkHowkTaFLfU0eOHPnvJdCNO+qLMYrYPgswgJt2lsOifRaoVsIYItUiLDoAgYoSAtxELyKHoEHFGApIYQGhQ9CgIkIvCkhhAaH9kcIS+m3RoFqEXhSQwhI6/JssPqITHbZIIos05rCMGDmcRTtu4zg+o2j3QjzGfRxDDoPY9JskskhjDsvKYkzjBLrQjUGE+IHv2FSrET24hyc4gyJGMIxNWwQoKotUK2EILzCBcxjCEGIU8A0bCBEihUZlJcziLtZsI4FmdOOV+jpwA31os708XmIKa3aQ8Hda0IoQzVhHhBVs2IOfjQiFXFr5wjUAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set Imperial Units</div>
         </div>
@@ -1128,10 +1013,7 @@
       <div class="cmd-card" data-name="command reference documentation online help" data-desc="command reference online documentation website browser open help site">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-              <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAChUlEQVR4Ae3AA6AkWZbG8f937o3IzKdyS2Oubdu2bdu2bdu2bWmMnpZKr54yMyLu+Xa3anqmhztr1a/y34vKCzYHruM/xj3AiudF5Xm9MvBZwOsDlf8YE/DrwOcAf8yzIZ7TOwPfB1SuuBOY+PeZA9dyxQS8B/DDXIF4tlcGfg+owLcAnw6c4z/GaeDzgQ8CJuBVgD8HKDzbtwOPBL4D+EDgiP84R8DPAw8BXhZ4EPD9AOKKCuwDc+B64B7+ZVvAa3PFbwMH/MuuA+4GVsACILjiJmAO3Avcw7/s9YGnAz8H/BzwdOD1+ZfdA9wLzIEHAwTPacW/bAv4IeA08CvArwCngR8CtviXrXg2gn+91wZOA78CvDHwxsCvAKeB1+Zfh8q/3s8D4jmtuGLOvw6Vf7+3B94MWAF/zL8OlX+fVwd+CKjApwB38K9D5d/ny4EKfA3w5fzrUfn3eSmu+GT+baj8+8y5YsW/DZV/H/HvQ/Bvdxr4LuC7gEfzb0Pwb7cFvDfw3sB1/NtQeU6FF9054H244gm86ArPhrhiDiy54gSwy3+O48BFrlgAq+CKFfAHXPHR/Of5aK74A2AFUHi2+4B3BV4duAj8Kf+xPhz4AiCADwOeBCCe0xcDn8QVdwB/DZzjeX0J8ASe06OBT+J5nQZeGriJK74E+GSuQDyvdwe+DLiOF+we4HWAJ3DFo4HfAq7jBbsH+Bjgh3k2xAv28sBNwHGe0/sDrwbcA7wOV/wWcB3wB8C385x2gTuAP+d5If71toBfBl4NuIcrrgP+AHhj4IAXHeLfZgv4ZeDVuOIPgDcGDvjXQfzbbQG/zBVvDBzwr4f499niigP+bRD/vaj89+IfAQLrZf9/6syWAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Command Reference</div>
         </div>
@@ -1145,9 +1027,7 @@
       <div class="cmd-card" data-name="feedback form bug report suggestion" data-desc="feedback bug report feature request suggestion airtable form browser open">
         <div class="cmd-top">
           <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACPUlEQVR4Ae3BPWiUZwAA4OeSd7jhhqMIBipWIYNDoEcrVPCkjm5mkGJsSyNaqpDCiYIOBhEEKx0aSWwVBJUK6ZCxUIRuXkDF4cYKN0RxiBLagod8wzcYeA/O6/30uzPo4vN413IGU0TR4FaR6CInm4M4jZLhpPgT53HPa3L+30+oaHlsMHlsFqX4Gr9pCvo7hgoSzGIBicFtwgV8h19Rx0PrRvUWcAd5fIufkRrOS/yO7fgEH+G2dUF3eRxCEX+LpmWzhntY0+kMvsHnmoJOFZxDUfQBbhhMitv4Hg0tq3iGzdiGlaDdPGZEj1BDYjAT+BjTKGEPGloSrwlaDmIGCY7jpuGVsIgSFjCthxEtp0SzuOnN1DCFFF9iTA8jogI+FV21MWq4j4CyHoJok+gxGlrGUZZdHVUtdexGQQ9Bf2XckN0tVA0g6K+OW7KrGlDQXxVVGyePD0Vr1o14uyYR8AgN64L+yjgiu2Vc190uzIuuagr6G8e07HK4rtNJ7EDAHSxoCtqNalfFYdnVdTeBFNcwg1RTEK2KtqCIf0V11A1vXHQZc1jxHyOiBMuiio2xC58hxQWs6GJUy3McQhn/4IHh7cUiivgFS3rIafcDToueooY10SpmkWo3if2iPCYwIVrGPjT0kNPpK/yIMZ2WMIVUdACLCNoluIKzSPSR09tObEERBVxEAUuYwlHMI+AS/kKCp3iIRAY52ZXxBwqooSQ6gTlDGpXdE9zFF9gqOoE5b1kZL1DxDo15b4O8Ap3mgEvh2tbRAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Feedback</div>
         </div>
@@ -1219,116 +1099,6 @@
     noResults.style.display = anyVisible ? 'none' : 'flex';
   }
 }());
-</script>
-</body>
-</html>
-
-  <!-- ── Help ── -->
-  <div class="panel-section panel-help" data-panel="help">
-    <div class="panel-header">
-      <div class="panel-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-          <line x1="12" y1="17" x2="12.01" y2="17"/>
-        </svg>
-      </div>
-      <span class="panel-name">Help</span>
-      <span class="panel-count">1 command</span>
-    </div>
-    <div class="cmd-grid">
-
-      <div class="cmd-card" data-name="command reference help website browser documentation" data-desc="opens command reference website default browser documentation help">
-        <div class="cmd-top">
-          <div class="cmd-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <line x1="2" y1="12" x2="22" y2="12"/>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-            </svg>
-          </div>
-          <div class="cmd-name">Command Reference</div>
-        </div>
-        <div class="cmd-desc">Opens the PDG Revit Tools command reference website in your default browser — this same page, always up to date.</div>
-        <div class="cmd-footer">
-          <span class="tag">HelpTools</span>
-          <span class="tag tag-module">Help</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="no-results" id="no-results">
-    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-    </svg>
-    <p>No commands match your search.</p>
-  </div>
-
-</main>
-
-<script>
-  const searchEl = document.getElementById('search');
-  const statsEl  = document.getElementById('stats');
-  const noRes    = document.getElementById('no-results');
-  const pills    = document.querySelectorAll('.pill');
-  const sections = document.querySelectorAll('.panel-section');
-  const cards    = document.querySelectorAll('.cmd-card');
-
-  let activeFilter = 'all';
-  let searchQuery  = '';
-
-  function update() {
-    let visible = 0;
-    const q = searchQuery.toLowerCase().trim();
-
-    sections.forEach(section => {
-      const panelKey = section.dataset.panel;
-      const showPanel = activeFilter === 'all' || activeFilter === panelKey;
-      let panelVisible = 0;
-
-      section.querySelectorAll('.cmd-card').forEach(card => {
-        const searchText = (card.dataset.name + ' ' + card.dataset.desc + ' ' + card.textContent).toLowerCase();
-        const matchesSearch = !q || searchText.includes(q);
-        const show = showPanel && matchesSearch;
-        card.style.display = show ? '' : 'none';
-        if (show) { panelVisible++; visible++; }
-      });
-
-      section.style.display = panelVisible > 0 ? '' : 'none';
-    });
-
-    noRes.style.display = visible === 0 ? 'block' : 'none';
-    statsEl.textContent = `${visible} command${visible !== 1 ? 's' : ''} · 8 panels`;
-  }
-
-  searchEl.addEventListener('input', e => {
-    searchQuery = e.target.value;
-    update();
-  });
-
-  pills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      pills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      activeFilter = pill.dataset.filter;
-      update();
-    });
-  });
-
-  // Keyboard shortcut: / to focus search
-  document.addEventListener('keydown', e => {
-    if (e.key === '/' && document.activeElement !== searchEl) {
-      e.preventDefault();
-      searchEl.focus();
-    }
-    if (e.key === 'Escape') {
-      searchEl.value = '';
-      searchQuery = '';
-      update();
-    }
-  });
 </script>
 </body>
 </html>
