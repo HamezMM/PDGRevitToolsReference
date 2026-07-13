@@ -86,56 +86,47 @@
 
   main {
     padding: 32px 40px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 0 auto;
   }
 
   .tour-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+    gap: 22px;
   }
 
   .tour-card {
-    display: block;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--text);
     overflow: hidden;
-    transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
 
   .tour-card:hover {
-    transform: translateY(-2px);
     border-color: var(--accent);
     box-shadow: var(--shadow);
   }
 
-  .tour-thumb {
+  .tour-embed {
     position: relative;
     width: 100%;
     padding-top: 56.25%;
-    background: linear-gradient(135deg, var(--accent-dim), var(--surface-hover));
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: var(--surface-hover);
   }
 
-  .tour-thumb svg {
+  .tour-embed iframe {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    color: var(--accent);
-    opacity: 0.85;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   .tour-body {
-    padding: 16px 18px;
+    padding: 14px 18px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -147,14 +138,22 @@
     font-weight: 600;
   }
 
-  .tour-arrow {
-    color: var(--text-muted);
-    flex-shrink: 0;
+  .tour-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--accent);
+    text-decoration: none;
+    white-space: nowrap;
   }
+
+  .tour-link:hover { text-decoration: underline; }
 
   @media (max-width: 700px) {
     header { padding: 20px; }
     main { padding: 20px; }
+    .tour-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -183,61 +182,45 @@
 <main>
   <div class="tour-grid">
 
-    <a class="tour-card" href="tour-1.html">
-      <div class="tour-thumb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-          <line x1="12" y1="22.08" x2="12" y2="12"/>
-        </svg>
+    <div class="tour-card">
+      <div class="tour-embed">
+        <iframe src="https://my.matterport.com/show/?m=FWmdLXi5twg" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
       </div>
       <div class="tour-body">
-        <span class="tour-name">Tour 1</span>
-        <span class="tour-arrow">&rarr;</span>
+        <span class="tour-name">Canal 108</span>
+        <a class="tour-link" href="canal-108.html">Open full page &rarr;</a>
       </div>
-    </a>
+    </div>
 
-    <a class="tour-card" href="tour-2.html">
-      <div class="tour-thumb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-          <line x1="12" y1="22.08" x2="12" y2="12"/>
-        </svg>
+    <div class="tour-card">
+      <div class="tour-embed">
+        <iframe src="https://my.matterport.com/show/?m=RGNUM82Ed8a" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
       </div>
       <div class="tour-body">
-        <span class="tour-name">Tour 2</span>
-        <span class="tour-arrow">&rarr;</span>
+        <span class="tour-name">Charger Industries</span>
+        <a class="tour-link" href="charger-industries.html">Open full page &rarr;</a>
       </div>
-    </a>
+    </div>
 
-    <a class="tour-card" href="tour-3.html">
-      <div class="tour-thumb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-          <line x1="12" y1="22.08" x2="12" y2="12"/>
-        </svg>
+    <div class="tour-card">
+      <div class="tour-embed">
+        <iframe src="https://my.matterport.com/show/?m=giGpTJfYap3" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
       </div>
       <div class="tour-body">
-        <span class="tour-name">Tour 3</span>
-        <span class="tour-arrow">&rarr;</span>
+        <span class="tour-name">Varsity Bible Church</span>
+        <a class="tour-link" href="varsity-bible-church.html">Open full page &rarr;</a>
       </div>
-    </a>
+    </div>
 
-    <a class="tour-card" href="tour-4.html">
-      <div class="tour-thumb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-          <line x1="12" y1="22.08" x2="12" y2="12"/>
-        </svg>
+    <div class="tour-card">
+      <div class="tour-embed">
+        <iframe src="https://my.matterport.com/show/?m=LjGtPuF5F9t" allowfullscreen allow="autoplay; fullscreen; web-share; xr-spatial-tracking;"></iframe>
       </div>
       <div class="tour-body">
-        <span class="tour-name">Tour 4</span>
-        <span class="tour-arrow">&rarr;</span>
+        <span class="tour-name">Northeast Wholesale</span>
+        <a class="tour-link" href="northeast-wholesale.html">Open full page &rarr;</a>
       </div>
-    </a>
+    </div>
 
   </div>
 </main>
