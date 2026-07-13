@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3D Tour — PDG Revit Tools</title>
+<title>Tour 1 — PDG Revit Tools</title>
 <style>
   :root {
     --bg: #1a1d23;
@@ -64,18 +64,22 @@
     margin-top: 2px;
   }
 
-  .back-link {
-    display: inline-flex;
+  .breadcrumbs {
+    display: flex;
     align-items: center;
     gap: 6px;
     margin-top: 20px;
     font-size: 13px;
+  }
+
+  .breadcrumbs a {
     color: var(--text-muted);
     text-decoration: none;
     transition: color 0.15s;
   }
 
-  .back-link:hover { color: var(--accent); }
+  .breadcrumbs a:hover { color: var(--accent); }
+  .breadcrumbs span { color: var(--text-muted); opacity: 0.5; }
 
   main {
     padding: 32px 40px;
@@ -126,10 +130,16 @@
     </div>
     <div>
       <h1>PDG <span>Revit Tools</span></h1>
-      <div class="subtitle">3D Tour</div>
+      <div class="subtitle">Tour 1</div>
     </div>
   </div>
-  <a class="back-link" href="index.html">&larr; Back to Command Reference</a>
+  <div class="breadcrumbs">
+    <a href="../index.html">Command Reference</a>
+    <span>/</span>
+    <a href="index.html">3D Tours</a>
+    <span>/</span>
+    <span style="color: var(--text);">Tour 1</span>
+  </div>
 </header>
 
 <main>
