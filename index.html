@@ -306,6 +306,15 @@
     color: var(--text-muted);
   }
 
+  .tag-link {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .tag-link:hover {
+    text-decoration: underline;
+  }
+
   /* ── No results ── */
   .no-results {
     text-align: center;
@@ -385,13 +394,13 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">34 commands · 8 panels</div>
+    <div class="stats" id="stats">35 commands · 8 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">34</span>
+      <span class="pill-count" id="count-all">35</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
@@ -426,7 +435,7 @@
     <button class="pill" data-filter="model">
       <span class="pill-dot" style="background:#66bb6a"></span>
       Model Setup
-      <span class="pill-count" id="count-model">5</span>
+      <span class="pill-count" id="count-model">6</span>
     </button>
     <button class="pill" data-filter="help">
       <span class="pill-dot" style="background:#ffca28"></span>
@@ -918,9 +927,28 @@
         </svg>
       </div>
       <span class="panel-name">Model Setup</span>
-      <span class="panel-count">5 commands</span>
+      <span class="panel-count">6 commands</span>
     </div>
     <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="place wall sweeps room selection" data-desc="wall sweeps reveals trim moulding rooms selection set bounding walls batch place">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="16" rx="1"/>
+              <line x1="3" y1="14" x2="21" y2="14"/>
+              <path d="M3 14l2-2M7 14l2-2M11 14l2-2M15 14l2-2M19 14l2-2"/>
+            </svg>
+          </div>
+          <div class="cmd-name">Place Wall Sweeps</div>
+        </div>
+        <div class="cmd-desc">Places wall sweeps along every wall bounding a selected set of rooms. Select the rooms, and the tool finds and sweeps all of their bounding walls in a single pass.</div>
+        <div class="cmd-footer">
+          <span class="tag">WallSweepTools</span>
+          <span class="tag tag-module">Model Setup</span>
+          <a class="tag tag-link" href="https://scribehow.com/o/buls0fYoSia5j0E9I_nc0A/viewer/PDG_Revit_Addin__Place_Wall_Sweeps__y--qTJbkSRemEpQw_KSucw" target="_blank" rel="noopener">▶ Watch Tutorial ↗</a>
+        </div>
+      </div>
 
       <div class="cmd-card" data-name="grid builder structural grid columns rectilinear origin" data-desc="structural grid rectilinear place model origin columns bays">
         <div class="cmd-top">
