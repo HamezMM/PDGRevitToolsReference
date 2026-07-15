@@ -411,13 +411,13 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">34 commands · 9 panels</div>
+    <div class="stats" id="stats">38 commands · 10 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">34</span>
+      <span class="pill-count" id="count-all">38</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
@@ -463,6 +463,11 @@
       <span class="pill-dot" style="background:#ec4899"></span>
       Finishes
       <span class="pill-count" id="count-finishes">1</span>
+    </button>
+    <button class="pill" data-filter="steel">
+      <span class="pill-dot" style="background:#64748b"></span>
+      PDG Steel
+      <span class="pill-count" id="count-steel">4</span>
     </button>
   </div>
 </header>
@@ -1103,6 +1108,80 @@
           <span class="tag">HelpTools</span>
           <span class="tag tag-module">Help</span>
           <a class="tag tag-link" href="https://scribehow.com/o/buls0fYoSia5j0E9I_nc0A/viewer/PDG_Revit_Addin__Give_Feedback__lXcEJulWQN2pz5l4ifZtDA" target="_blank" rel="noopener">Walkthrough</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── PDG Steel ── -->
+  <div class="panel-section panel-steel" data-panel="steel">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m12 2 8 4-8 4-8-4 8-4Z"/>
+          <path d="m4 10 8 4 8-4"/>
+          <path d="m4 14 8 4 8-4"/>
+        </svg>
+      </div>
+      <span class="panel-name">PDG Steel</span>
+      <span class="panel-count">4 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="steel weight plate" data-desc="weight per square foot structural connection plate thickness calculate">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw1AUhU9TpaJVQTuIOGSoTnZREcdSxSJYKG2FVh1MXvoHTRqSFBdHwbXg4M9i1cHFWVcHV0EQ/AFxdnBSdJES70sKLWJ8cHkf571zuO8+QGhUmGp2RQFVs4xUPCZmc6ti4BV9GMAQVVhipp5IL2bgub7u4eP7XYRned/7c/UreZMBPpE4ynTDIt4gnt20dM77xCFWkhTic+JJgxokfuS67PIb56LDAs8MGZnUPHGIWCx2sNzBrGSoxDPEYUXVKF/Iuqxw3uKsVmqs1Sd/YTCvraS5TjWGOJaQQBIiZNRQRgUWIrRrpJhI0XnMwz/q+JPkkslVBiPHAqpQITl+8D/4PVuzMD3lJgVjQPeLbX+MA4FdoFm37e9j226eAP5n4Epr+6sNYO6T9HpbCx8Bg9vAxXVbk/eAyx1g5EmXDMmR/FRCoQC8n9E35YDhW6B3zZ1b6xynD0CGZrV8AxwcAhNFyl73eHdP59z+vdOa3w+mNXK7+te+ZgAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLFg0oARbjB3IAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAACc0lEQVRYw82Xv2sUQRTHP3tZAuehFwLGwkSwCQiePxAxiIWVPxp7fxSW8S+wUjBpUuqhhXZKiDaBFNrZ2CgajRgEtQpYiTkhkPVyHN6tzXflseztzt6duTxYZufN9375zszb92ZhwOKZ93AQ8xbYIVLswiY0T9fzeT2QDjscZS4Z+BEM5SQ7BlwCrgOnzdhuYBT4CWz1O6A9YAp4BtSBduz8o6cN/AaeAqd6PN5/sgd4YFYVAi1gDXgJLKldkz7C1IH72pmuZRx4Y5z+AOaAQ8Cwjq+gdlj6OeEim9fyk1v2AstmxfMxRyXgKHBGbcmMTQgfkViWP2fxgUXjYFY6DzgCPAFqQANoqq0Bj4GKcD4wY3wsSuck14xhVdvsAzcVZGHKEwjny65qxq66TF4yBp+AshzNAn+k35Dji8BxtVXpQ+FmZFcGVqVfBXZlEbhgCFwxuqY5z0npK9JV1J8E3knXBM5Lf9n4PJdF4JEBFxXhH9T/rgBLqwUTwkVkC/IT4R66Fph5BdNJs/ppx2J0w+zCCZOQQuCzK4G4sy1gvyOBcZO4pmP4jaxiFMT6Y2rXE8Y6yabwAPuyak8h5YaEVhJ9HUMdsF7CJFFiqvdajr+oyIwChxMIFBMIVIRvA1/zpuAgdqYj2s4QeO6QzXzghfDrsrcxsJmXACaltoBbKSR84LapincSgrYrAmWTYFrAAnDM3OuK6i+Yyd/Kri8EAA4CK+azawDfgPdqG2ZsRXj6SSCKh3vArw6FqAbcTVh5KgEvgUAp4zp1ADirbR9RcvkIvFIaTktyQdYtKfiPf0iJOzDwa7nv8NOxbT+n2zWxx06Sv2/n4KHmCpvRAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Steel Weight</div>
+        </div>
+        <div class="cmd-desc">Sets the weight per square foot of every structural connection plate based on its thickness.</div>
+        <div class="cmd-footer">
+          <span class="tag">SteelTools</span>
+          <span class="tag tag-module">PDG Steel</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="key plates rekey" data-desc="key plate suffix letter plate type mark structural connection">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpaItDhYRcchQneyipTiWKhbBQmkrtOpgcv2EJg1Jiouj4Fpw8GOx6uDirKuDqyAIfoA4OzgpukiJ/0sKLWI8OO7Hu3uPu3eA0KoxxeiLAYpq6ulEXMzlV0XfK4YwigAiiErM0JKZxSxcx9c9PHy9C/Ms93N/jkChaDDAIxLHmKabxBvE0U1T47xPHGQVqUB8Tjyt0wWJH7kuO/zGuWyzwDODejY9TxwkFss9LPcwq+gKcYQ4VFBUyhdyDhc4b3FWag3WuSd/ob+ormS4TnMCCSwhiRREyGigihpMhGlVSTGQpv24i3/c9qfIJZOrCkaOBdShQLL94H/wu1ujNDvjJPnjQP+LZX1MAr5doN20rO9jy2qfAN5n4Ert+ustYO6T9GZXCx0Bw9vAxXVXk/eAyx1g5EmTdMmWvDSFUgl4P6NvygMjt8DgmtNbZx+nD0CWulq+AQ4OgakyZa+7vHugt7d/z3T6+wE5e3L2mCPwRgAAAAZiS0dEAAAAAAAA+UO7fwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLFg4COVPMzZ0AAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAABa0lEQVRYw+1XvUrDUBT+7j3p0k5dXBxE6OAuBEV0cPERpCIIXSw46NjXCArqkknqK/QFRMgTdIivoJtm8HhdkpKk+bm3TYxDDgRyk5zvfLnfSe53gYZDpC8QUZ+ZnwHMw/uqghoKwA4RDZn5oyxhFibUcczSxawMAnMAJ57nVTrVtm1H2ImQOrLUKXkWgSXNhTDnlJOjdCRYAlqHgFLFPVxKIAIoAyrKLQrZ9H+gJdASaAm0BFoCmQTk1in2zx4W473hfWJcZc3/OQNC0Mqrm2nNxUJPg5ER+ut0XOoH4oRDS+YAmAAItP2AoePRMSRBniHpsO9+w9q4k5vHV6LTxcvTJQDg4Pwx8dZKKS05dJ6xioyjlKv7U91+qa0Hcmy5A+DGyBOWAJp2zlHaGMcJ9Nh3P4moj+2LdwDgt+ktVPBDg9E1ALDvOmt8foeA2tXahERysO+KlDxd9t2vKn9EVkZxGTu3/nDX1Ez8AvGOgNMT5gQkAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Key Plates</div>
+        </div>
+        <div class="cmd-desc">Keys picked groups of structural connection plates by suffix letter, writing each group's Plate_Type_Mark as P{index}{suffix}.</div>
+        <div class="cmd-footer">
+          <span class="tag">SteelTools</span>
+          <span class="tag tag-module">PDG Steel</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="sheet views place view template" data-desc="place views view template sheet number prefix match">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUWrHeyg4pChOtlFRRxLFYtgobQVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ttIjx4Lgf7+497t4BQqPCVLMnCqiaZaTiMTGbWxV9r+jHCIIYhF9ipp5IL2bgOr7u4eHrXYRnuZ/7cwwoeZMBHpE4ynTDIt4gnt20dM77xCFWkhTic+JJgy5I/Mh1ucVvnIsOCzwzZGRS88QhYrHYxXIXs5KhEs8QhxVVo3wh22KF8xZntVJj7XvyFwby2kqa6zTHEMcSEkhChIwayqjAQoRWjRQTKdqPufhHHX+SXDK5ymDkWEAVKiTHD/4Hv7s1C9NTraRADOh9se2PccC3CzTrtv19bNvNE8D7DFxpHX+1Acx9kl7vaOEjILgNXFx3NHkPuNwBhp90yZAcyUtTKBSA9zP6phwwdAv0rbV6a+/j9AHIUFfLN8DBITBRpOx1l3f7u3v790y7vx90p3KnwIKKIQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLGQ8REV43XpQAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAABbElEQVRYw+2WMUrEUBCGv6yKK7oooqA24gUWsbP1ACk8gvZeQGy9wWKj3RZa6AW01juIIArarViIGwPZ2MzC8EiyL5uXpMkPQ/LmhZk/zJ8/Dxo0qBleQi6uqS/4vl9F81hiMWuzrNB9NgBaklhQD3glBcC7+cazcp3PnI27uQ/NZCtHgS5wJdF1zW5lgvrXgU81yw9gbYo+wzQNTMIesKnWW5IrDFsCr0Cg1oHkxugAd8Ct3DsfAcAx8CJxpAQ7I7oYj6cvOasR5CEA0JbQOAEiRWAEnLoisKw+0SQcSFHTcELgsCiBfWAAPMm+iR35GtJc7wvYnZbANvCmil0Dc2p/CXi0sN5no5EVgY68tVnsTInuMof/34vVWxPopxQKgXPgwhCdTfRsCTyIil3/BSPgxoZAmTEqYsWlnYKqJGAiqJvAtyYQAT8VNA3l3OmZc/FEGIMEr3eFP2A1SxieGEZZY4mB34qO/Q3s8Q/8QdUPgcq01AAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Sheet Views</div>
+        </div>
+        <div class="cmd-desc">Places every view sharing a chosen view template onto the sheet whose number prefix matches.</div>
+        <div class="cmd-footer">
+          <span class="tag">SteelTools</span>
+          <span class="tag tag-module">PDG Steel</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="place holes cut opening" data-desc="cut opening structural plate footprint hole">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUWrHeyg4pChOtlFRRxLFYtgobQVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ttIjx4Lgf7+497t4BQqPCVLMnCqiaZaTiMTGbWxV9r+jHCIIYhF9ipp5IL2bgOr7u4eHrXYRnuZ/7cwwoeZMBHpE4ynTDIt4gnt20dM77xCFWkhTic+JJgy5I/Mh1ucVvnIsOCzwzZGRS88QhYrHYxXIXs5KhEs8QhxVVo3wh22KF8xZntVJj7XvyFwby2kqa6zTHEMcSEkhChIwayqjAQoRWjRQTKdqPufhHHX+SXDK5ymDkWEAVKiTHD/4Hv7s1C9NTraRADOh9se2PccC3CzTrtv19bNvNE8D7DFxpHX+1Acx9kl7vaOEjILgNXFx3NHkPuNwBhp90yZAcyUtTKBSA9zP6phwwdAv0rbV6a+/j9AHIUFfLN8DBITBRpOx1l3f7u3v790y7vx90p3KnwIKKIQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLGRQeIwELX0oAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAB40lEQVRYw+3WvWpUURAH8F9UVgJqVDSwjV9gLEwjAX0Bja/gB1oYGxVhtfQFtIkoaG0XH0DEPICNhV06xY+golE0Cn5E2VybWTgs183euzfeQv8wcPbMzJn/mTszZxkM20NqwS4s4D12lz1kzQAE9sXtt2GsDgKV4D+BogSG0Oihb4RN5QQ24DTuY7aH3Swe4Aw2VpWh43iKZWR4HLqj8TuLtdBlYfsSp7C2bPB1uIF2EmgB0z0ITIdNZ7+N62VJXE5u/QEtbE70eQSETSt8Otk4VzT4CN7GAa8xnmPzJwIdjIdvhnkMFynC/RiN9VXMlcjgHK7Fuom9Zbvg2wBFnPpmRRy3xCOT4Ql2lvgEO8I3i44YLsr+SlKE8ziJ9X0QaOAYXiSdcL5M+hq4k5BYxnPcwglcSgi0IujNrpnRjr2BZsFFvEuCZQmhvHVH3mCqqvdmNObCI3zJCdaRz3iIC9ja7+NSFE3siSLbFHuLUSfPIlv/BiZwL2SiDgIrzYHK/5AcClkJB3Gg6tuO4TuWcDaKtzsDQ6Fbwo94T/rq837wKw4ewe3Ye9XVTVOha0RXfK06C4fj4Aw/cTfJwEwQzMJmcrUK7wg+9RhEqxo8JbFYV/C8z/HXg6ckPoZMqgnNkNL4Dal3ph+D+udSAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Place Holes</div>
+        </div>
+        <div class="cmd-desc">Cuts an opening through each picked structural plate matching its own footprint.</div>
+        <div class="cmd-footer">
+          <span class="tag">SteelTools</span>
+          <span class="tag tag-module">PDG Steel</span>
         </div>
       </div>
 
