@@ -411,7 +411,7 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">38 commands · 10 panels</div>
+    <div class="stats" id="stats">39 commands · 10 panels</div>
   </div>
 
   <div class="filters">
@@ -691,7 +691,7 @@
         </svg>
       </div>
       <span class="panel-name">Assembly Tools</span>
-      <span class="panel-count">5 commands</span>
+      <span class="panel-count">6 commands</span>
     </div>
     <div class="cmd-grid">
 
@@ -717,6 +717,20 @@
           <div class="cmd-name">Wall Assembly Builder</div>
         </div>
         <div class="cmd-desc">For every sheet using the CD23 view template, finds all tagged wall types, creates a drafting view containing their matched detail groups, and places it on the sheet. Detail group names must start with the wall type's Type Mark followed by " – ".</div>
+        <div class="cmd-footer">
+          <span class="tag">WallAssemblyTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="detail group manager wall type mark drag drop associate" data-desc="detail group manager drag and drop associate detail groups wall types type mark duplicate unassociated rename">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUElEQVR4Ae3BIWsbYRgA4IcjImKisMAKO8jBKgILrLJiYtCJ/oz+k+2nVUZUTJxI4AIX6OCmeiKwE4NMvOKj8F1VRMU9j8lkMnmr/qKR9wsnZ1LI+4OZvAscnEkhr/e6wZkU8noshW/4ie/Ce3TOpJDXSe7xA/fCO/SSZzwIC5xwwkJ4wLMRhbxBmKHCHpWkl+xRCmvJSqiwN6KQ1wolKmywxELoJA0+CivssMNa+IDGiELeIFligxIXwiBpMccFVtiiwQoLzNEaMZPXCdfCRqiEVtIIJVaohTUuhcaIQl4vXGPAI474KgySVijxBTVqfEYpNEbM5PVChZ2wQyV0kq1whUvUQokroTFiJq8TblALDW6EXvKEf7gTtpI7DHgyopA3CEtshRqfhN5Le9zigCOO+I1bHLyikNcKc9TCFjOh81KDObaSGnM0JpPJ5C37D44oVhfFOR6wAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Detail Group Manager</div>
+        </div>
+        <div class="cmd-desc">Drag-and-drop dialog that assigns Detail Groups to Wall Types using the same "{Type Mark} – {Description}" naming convention Assembly Builder relies on. Dropping a group onto an unmatched wall type duplicates it (flagged UNASSOCIATED); dropping onto an already-matched wall type moves the group there and frees up the old one.</div>
         <div class="cmd-footer">
           <span class="tag">WallAssemblyTools</span>
           <span class="tag tag-module">Assembly Tools</span>
@@ -1151,34 +1165,6 @@
           <div class="cmd-name">Key Plates</div>
         </div>
         <div class="cmd-desc">Keys picked groups of structural connection plates by suffix letter, writing each group's Plate_Type_Mark as P{index}{suffix}.</div>
-        <div class="cmd-footer">
-          <span class="tag">SteelTools</span>
-          <span class="tag tag-module">PDG Steel</span>
-        </div>
-      </div>
-
-      <div class="cmd-card" data-name="sheet views place view template" data-desc="place views view template sheet number prefix match">
-        <div class="cmd-top">
-          <div class="cmd-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUWrHeyg4pChOtlFRRxLFYtgobQVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ttIjx4Lgf7+497t4BQqPCVLMnCqiaZaTiMTGbWxV9r+jHCIIYhF9ipp5IL2bgOr7u4eHrXYRnuZ/7cwwoeZMBHpE4ynTDIt4gnt20dM77xCFWkhTic+JJgy5I/Mh1ucVvnIsOCzwzZGRS88QhYrHYxXIXs5KhEs8QhxVVo3wh22KF8xZntVJj7XvyFwby2kqa6zTHEMcSEkhChIwayqjAQoRWjRQTKdqPufhHHX+SXDK5ymDkWEAVKiTHD/4Hv7s1C9NTraRADOh9se2PccC3CzTrtv19bNvNE8D7DFxpHX+1Acx9kl7vaOEjILgNXFx3NHkPuNwBhp90yZAcyUtTKBSA9zP6phwwdAv0rbV6a+/j9AHIUFfLN8DBITBRpOx1l3f7u3v790y7vx90p3KnwIKKIQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLGQ8REV43XpQAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAABbElEQVRYw+2WMUrEUBCGv6yKK7oooqA24gUWsbP1ACk8gvZeQGy9wWKj3RZa6AW01juIIArarViIGwPZ2MzC8EiyL5uXpMkPQ/LmhZk/zJ8/Dxo0qBleQi6uqS/4vl9F81hiMWuzrNB9NgBaklhQD3glBcC7+cazcp3PnI27uQ/NZCtHgS5wJdF1zW5lgvrXgU81yw9gbYo+wzQNTMIesKnWW5IrDFsCr0Cg1oHkxugAd8Ct3DsfAcAx8CJxpAQ7I7oYj6cvOasR5CEA0JbQOAEiRWAEnLoisKw+0SQcSFHTcELgsCiBfWAAPMm+iR35GtJc7wvYnZbANvCmil0Dc2p/CXi0sN5no5EVgY68tVnsTInuMof/34vVWxPopxQKgXPgwhCdTfRsCTyIil3/BSPgxoZAmTEqYsWlnYKqJGAiqJvAtyYQAT8VNA3l3OmZc/FEGIMEr3eFP2A1SxieGEZZY4mB34qO/Q3s8Q/8QdUPgcq01AAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
-          </div>
-          <div class="cmd-name">Sheet Views</div>
-        </div>
-        <div class="cmd-desc">Places every view sharing a chosen view template onto the sheet whose number prefix matches.</div>
-        <div class="cmd-footer">
-          <span class="tag">SteelTools</span>
-          <span class="tag tag-module">PDG Steel</span>
-        </div>
-      </div>
-
-      <div class="cmd-card" data-name="place holes cut opening" data-desc="cut opening structural plate footprint hole">
-        <div class="cmd-top">
-          <div class="cmd-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUWrHeyg4pChOtlFRRxLFYtgobQVWnUwufQLmjQkKS6OgmvBwY/FqoOLs64OroIg+AHi7OCk6CIl/i8ttIjx4Lgf7+497t4BQqPCVLMnCqiaZaTiMTGbWxV9r+jHCIIYhF9ipp5IL2bgOr7u4eHrXYRnuZ/7cwwoeZMBHpE4ynTDIt4gnt20dM77xCFWkhTic+JJgy5I/Mh1ucVvnIsOCzwzZGRS88QhYrHYxXIXs5KhEs8QhxVVo3wh22KF8xZntVJj7XvyFwby2kqa6zTHEMcSEkhChIwayqjAQoRWjRQTKdqPufhHHX+SXDK5ymDkWEAVKiTHD/4Hv7s1C9NTraRADOh9se2PccC3CzTrtv19bNvNE8D7DFxpHX+1Acx9kl7vaOEjILgNXFx3NHkPuNwBhp90yZAcyUtTKBSA9zP6phwwdAv0rbV6a+/j9AHIUFfLN8DBITBRpOx1l3f7u3v790y7vx90p3KnwIKKIQAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+gLGRQeIwELX0oAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAB40lEQVRYw+3WvWpUURAH8F9UVgJqVDSwjV9gLEwjAX0Bja/gB1oYGxVhtfQFtIkoaG0XH0DEPICNhV06xY+golE0Cn5E2VybWTgs183euzfeQv8wcPbMzJn/mTszZxkM20NqwS4s4D12lz1kzQAE9sXtt2GsDgKV4D+BogSG0Oihb4RN5QQ24DTuY7aH3Swe4Aw2VpWh43iKZWR4HLqj8TuLtdBlYfsSp7C2bPB1uIF2EmgB0z0ITIdNZ7+N62VJXE5u/QEtbE70eQSETSt8Otk4VzT4CN7GAa8xnmPzJwIdjIdvhnkMFynC/RiN9VXMlcjgHK7Fuom9Zbvg2wBFnPpmRRy3xCOT4Ql2lvgEO8I3i44YLsr+SlKE8ziJ9X0QaOAYXiSdcL5M+hq4k5BYxnPcwglcSgi0IujNrpnRjr2BZsFFvEuCZQmhvHVH3mCqqvdmNObCI3zJCdaRz3iIC9ja7+NSFE3siSLbFHuLUSfPIlv/BiZwL2SiDgIrzYHK/5AcClkJB3Gg6tuO4TuWcDaKtzsDQ6Fbwo94T/rq837wKw4ewe3Ye9XVTVOha0RXfK06C4fj4Aw/cTfJwEwQzMJmcrUK7wg+9RhEqxo8JbFYV/C8z/HXg6ckPoZMqgnNkNL4Dal3ph+D+udSAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
-          </div>
-          <div class="cmd-name">Place Holes</div>
-        </div>
-        <div class="cmd-desc">Cuts an opening through each picked structural plate matching its own footprint.</div>
         <div class="cmd-footer">
           <span class="tag">SteelTools</span>
           <span class="tag tag-module">PDG Steel</span>
