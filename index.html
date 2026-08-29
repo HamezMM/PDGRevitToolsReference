@@ -350,6 +350,9 @@
   .panel-model       .panel-icon { background: #43a04720; color: #66bb6a; }
   .panel-help        .panel-icon { background: #ffb30020; color: #ffca28; }
   .panel-finishes    .panel-icon { background: #ec489920; color: #ec4899; }
+  .panel-site        .panel-icon { background: #65a30d20; color: #84cc16; }
+  .panel-ldcalc      .panel-icon { background: #0891b220; color: #22d3ee; }
+  .panel-grid        .panel-icon { background: #6366f120; color: #818cf8; }
 
   .panel-sheets      .panel-name { color: #0696d7; }
   .panel-elevations  .panel-name { color: #e53935; }
@@ -360,6 +363,9 @@
   .panel-model       .panel-name { color: #66bb6a; }
   .panel-help        .panel-name { color: #ffca28; }
   .panel-finishes    .panel-name { color: #f472b6; }
+  .panel-site        .panel-name { color: #84cc16; }
+  .panel-ldcalc      .panel-name { color: #22d3ee; }
+  .panel-grid        .panel-name { color: #818cf8; }
 
   /* cmd-icon per panel color */
   .panel-sheets      .cmd-icon { background: #0696d718; color: #3fb3e8; }
@@ -371,6 +377,9 @@
   .panel-model       .cmd-icon { background: #43a04718; color: #80c784; }
   .panel-help        .cmd-icon { background: #ffb30018; color: #ffd54f; }
   .panel-finishes    .cmd-icon { background: #ec489918; color: #f472b6; }
+  .panel-site        .cmd-icon { background: #65a30d18; color: #a3e635; }
+  .panel-ldcalc      .cmd-icon { background: #0891b218; color: #67e8f9; }
+  .panel-grid        .cmd-icon { background: #6366f118; color: #a5b4fc; }
 
   /* ── Responsive ── */
   @media (max-width: 700px) {
@@ -411,18 +420,18 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">39 commands · 10 panels</div>
+    <div class="stats" id="stats">47 commands · 13 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">38</span>
+      <span class="pill-count" id="count-all">47</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
       Sheets &amp; Views
-      <span class="pill-count" id="count-sheets">6</span>
+      <span class="pill-count" id="count-sheets">7</span>
     </button>
     <button class="pill" data-filter="elevations">
       <span class="pill-dot" style="background:#e53935"></span>
@@ -432,7 +441,12 @@
     <button class="pill" data-filter="assembly">
       <span class="pill-dot" style="background:#a1887f"></span>
       Assembly Tools
-      <span class="pill-count" id="count-assembly">5</span>
+      <span class="pill-count" id="count-assembly">7</span>
+    </button>
+    <button class="pill" data-filter="site">
+      <span class="pill-dot" style="background:#65a30d"></span>
+      Site
+      <span class="pill-count" id="count-site">1</span>
     </button>
     <button class="pill" data-filter="schedules">
       <span class="pill-dot" style="background:#a57aff"></span>
@@ -449,10 +463,20 @@
       Analysis
       <span class="pill-count" id="count-analysis">3</span>
     </button>
+    <button class="pill" data-filter="ldcalc">
+      <span class="pill-dot" style="background:#0891b2"></span>
+      LD Calculator
+      <span class="pill-count" id="count-ldcalc">6</span>
+    </button>
     <button class="pill" data-filter="model">
       <span class="pill-dot" style="background:#66bb6a"></span>
       Model Setup
       <span class="pill-count" id="count-model">5</span>
+    </button>
+    <button class="pill" data-filter="grid">
+      <span class="pill-dot" style="background:#6366f1"></span>
+      Grid Tools
+      <span class="pill-count" id="count-grid">1</span>
     </button>
     <button class="pill" data-filter="help">
       <span class="pill-dot" style="background:#ffca28"></span>
@@ -467,7 +491,7 @@
     <button class="pill" data-filter="steel">
       <span class="pill-dot" style="background:#64748b"></span>
       PDG Steel
-      <span class="pill-count" id="count-steel">4</span>
+      <span class="pill-count" id="count-steel">2</span>
     </button>
   </div>
 </header>
@@ -484,7 +508,7 @@
         </svg>
       </div>
       <span class="panel-name">Sheets &amp; Views</span>
-      <span class="panel-count">6 commands</span>
+      <span class="panel-count">7 commands</span>
     </div>
     <div class="cmd-grid">
 
@@ -572,6 +596,20 @@
         </div>
       </div>
 
+      <div class="cmd-card" data-name="room ceiling offset limit offset ceiling elevation" data-desc="room limit offset ceiling elevation detect ray cast phase batch">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACe0lEQVR4AeXBPWhcBQAA4C/3ng5y40MeKKLQ4Q0Bb3ComKFXm3K0h0SoUILQK2QU1K1goGgJdu4mVLxW0C5HS0uIcOI5pAhBjIUIJ4YI4vCGmoB9k0ii8IS715ek+ZNQ+n32qYqqfQjs3RF0MYUuVu1BYG9OYA4v4llMYhErdimwe+/gc1Qxi19QwyTWsGAXAjsX4hNMo4IZTOELPIVjOIXnMYd1OxDYmRizmECGc7hi4Bv8jAaO4jjmkHmEwKPV0MMofsc4vla2hDk0MYqz6CG1jcD2zuImItzFOJZtLcWXeBWjeBu/YskWAlu7hCt4Gp/iDP5UFKOKzECG63gOR3EGIXo2ESirooMp/I13MY11RTF6aKGDzMA6buMPnMQxvII7+MuQQNERdDGG+3gTN5TF6CFBhCY6yBQt4DucQg1voItV/wkMnEAXL+AnjON7ZTF6SAxEaKKDTNEKbuJ1jGISi1jxr0DuPVzDM5hFA6myGD0k6COS6yNBEx1kilZxHS+jhkmsYaGCGBcRYgan8QBtZQ0k6KNuoI4+EjSUtfEApzGDEJcQh0jxFiLcwAe21pb7CqmBFHU00La9aSzhPlL7tIEN+1BxyCoOWajsM7m7uOpgTOE1ufOGVJS10MKYgzOGFloeEio7L7fs4FzFtzYRKmvb3gW0kSqK0cJlZfOYt4nQ7lzAxziHuoEYPSRyl+1QoKyFGqr4TdEymkjQRCTXRII+3kemaAzHUcOPhgTKFjGBALcUZeigicRAhD7qSJV9hIuYwIeGBMpewj3M4wdlGTpoIpLro47U5iKs4R5uGTJi72L05OpIHYIYscfZiLIN/68RQyqedP8A5xaYoValM8gAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Room Ceiling Offset</div>
+        </div>
+        <div class="cmd-desc">Sets each room's Limit Offset to match the elevation of the ceiling detected above it, batched across every room in the active phase.</div>
+        <div class="cmd-footer">
+          <span class="tag">RCPTools</span>
+          <span class="tag tag-module">Sheets &amp; Views</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -604,14 +642,14 @@
         </div>
       </div>
 
-      <div class="cmd-card" data-name="selection elevations element selection elevation" data-desc="elements selection bounding box elevations north south east west marker offset CD32 interior elevation template">
+      <div class="cmd-card" data-name="selection elevations element selection elevation selection set" data-desc="saved selection sets batch bounding box elevations north south east west CD32 interior elevation template">
         <div class="cmd-top">
           <div class="cmd-icon">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACY0lEQVR4AeXBP2hUdwAA4I/3fmoKN3Q4JNBQOmRrhitkiP8gFC0iUhqqIEFwyWbAiCc6BDqkwcJZKOLiUBSF5hBKqa0cctIMRgwiiBCHoESHU26ICiWglDS08IS03L/3YsTB7/OGcsh5A7G160UVI6jiuTWIrc1OVPAJNmMYd7Ego1h2o7iEHK7iAQoYxgvclkEsvYBzGEeESYzgJ2zAIPagBxWsSCGWTjeu4iss4RDOWPUH5rEbA/gcFSzpINZZAdPoQw27cF2jOVSwF304gGnUtRFr7wB+QR43sQsPtVbHFLagDwfxCHNaiLU2gTPYiB+xD3/qbAkX8REGsA8B05qINcrhZ4xgGUcwjhXpreAKnuELDKIfv+Ev/xH7v15UsR2LGELZ2t3GLexBAV+iiudei63aiSo+lhjBFc3lsBUF5PBUawuo4WtsxjDuYsG/gsQYSgh4iQ+wSaMuTGAUXVbVcBxlzW2SeIk8KjiKsxG68Q0CJnFZc12oooiAe7iGJ+jBFIrau4xJBEygO6CO/cijjAua+xbbUccQZiUCxlBCCbOY0do45rCIepC4rr0cDmMZQ5i1ahmn0Y1jKGJGe2WvRdLpRxfuY1ZzFyS2ySCSzocSda09lsjLIJJOTeJTBM31S8zLIJLOHdTQgzGNAk5J/C6DSHrHJUoooQ85DOIGBvA3fpBBkF4ZPSihiKJGMUZxUkqRbE5jB37FM4l5fI/9WMYJ7JZSkN0MZjTXi1O4hM9Q00FkfX2Ha8hjCkEHkfV3EDUUUNBBsP4WMYRXmNNB8HbckVLkHQtaO4/z3rLI++4fSlCK5vbfZYsAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Selection Elevations</div>
         </div>
-        <div class="cmd-desc">Creates N/S/E/W elevation views around the combined bounding box of user-picked elements. Set the marker offset distance (2'–5') from a dialog; applies the CD32 Interior Elevation template automatically.</div>
+        <div class="cmd-desc">Batch-creates N/S/E/W elevation views around the combined bounding box of one or more saved selection sets — pick which sets to process, which directions to create, and confirm true-north orientation in one dialog. Views are named "[SET NAME] - [DIRECTION] ELEVATION" and the CD32 Interior Elevation template is applied automatically.</div>
         <div class="cmd-footer">
           <span class="tag">ElevationTools</span>
           <span class="tag tag-module">Elevation Tools</span>
@@ -661,14 +699,14 @@
         </div>
       </div>
 
-      <div class="cmd-card" data-name="set level head extents level line crop boundary CD32 interior elevation" data-desc="level lines extents crop region boundary interior elevation view template CD32 trim 1/4 inch bubble">
+      <div class="cmd-card" data-name="set level head extents level line crop boundary CD32 interior elevation" data-desc="level lines extents crop region boundary interior elevation view template CD32 trim 6 inch bubble right side">
         <div class="cmd-top">
           <div class="cmd-icon">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABwklEQVR4AeXBPUuUAQAA4Of9sCFulBCKaHA86IYGgwYpjRCJAgM5Am+4MagfIDSIf8CtITwNSgIRLLnhJKcIXGxwicKWhhtMIQ6CCK/gBC/sPj17h57HCaWQcgKR7g2ihDxK2NOFSHdGUMQlnEMWW9jRoUjnHuAZUljDR2SQxT42dSDSvhhPMI0Qs8jjOfowjDFcQBEH2hBpzwDWcAcVTGHOkTf4gFsYwnUUUdFCpLUMNpDGF4xi3XHbKGIcaUxiA2VNRJqbxAr68Raj+KSxMl7gKtK4j8/Y1kCksRnM4QyeYgLftFbBIs5jCBOIseEvIselsIw8fuIhpnGgfQdYxVfcxDCu4BV+qBP50yBKuIZd3MWS7m3iHcaQwW2UsOdQ5MgISrioJo9VJ7eDFdxAGllsYcdvkZpHWMBZfEcfXuO93tjDIi4jgyz2sRliAI8RYxYvnY4KxjGLGDMYiFHGPfRjCQWnaxrb2EU5VrPu31pyKJSwWO9VNReoE0pYrPcCHQglLNZ7Vc0F6oQSFuu9QAdCCYu1L4d5jS0gh6rmAnVCCYu1r4CC1gIdCCUscFwBU44EanKY19gCcqhqLlAn9L/7BdGtXwPTQ7oPAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
           </div>
           <div class="cmd-name">Set Level Head Extents</div>
         </div>
-        <div class="cmd-desc">Trims level line extents to the crop region boundary for every elevation using the CD32 Interior Elevation view template. Extends 1/4" past the boundary wherever a level head bubble is visible.</div>
+        <div class="cmd-desc">Trims level line extents to the crop region boundary for every elevation using the CD32 Interior Elevation view template. Forces the level head (bubble) to show on the right end and extends it 6" past the boundary; the left end is trimmed flush.</div>
         <div class="cmd-footer">
           <span class="tag">ElevationTools</span>
           <span class="tag tag-module">Elevation Tools</span>
@@ -691,7 +729,7 @@
         </svg>
       </div>
       <span class="panel-name">Assembly Tools</span>
-      <span class="panel-count">6 commands</span>
+      <span class="panel-count">7 commands</span>
     </div>
     <div class="cmd-grid">
 
@@ -779,6 +817,50 @@
         </div>
       </div>
 
+      <div class="cmd-card" data-name="wall fire rating lines fire rating sheets" data-desc="wall fire rating lines detail lines line style sheets floor plan section elevation batch">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACa0lEQVR4AdXBT4hUdQAA4G/fm8McBhnEdJLBhvLQwUOo4BwEh9hDh6XMUEYwCRT11qXDggtuJBhZlGdPUkLSSh6ElAiUVlBiWQXRPYyyUsEiS3h4iOA7dPgdFt97Mzt/BPH7vGqxwR3GBezD33hoBLHBXUcNm3AQOzGPx4YQG9wn2GjF2ziC55g1oNjgHqMt+A4bsRbjaOIqnupTbHAL+BRr8Rf24h1swWZ8iItI9CE2nDV4Hw2cwgweYQLrMYGLSKwiNpynOIIKzuEJbuM+9mA9xnEOqR5iw/kPk4hwA/cE93Af+1DDG7ish8hwnuFfQcWLZvCl4CjaeoiMriHvJP4QfI+qLiL92YmqYovyUhzGM9QwqYtIb+vwG/7Er1aUsUGQKLaIM4LPUVMg0l0D8/hA0EJb0EJZMKu7r5GgjAMKRIqV8QvqSHBXcBo1HBPMYUl3T3BecEiBSLFpbEeKvfgYKeqYx0eCb63uJ8G72CwjklfGIcEZXEEH+5GiJriOn63uJhJBU0YkbzfWIcUPVsxgP1IsoK0/KeYETRklee8JbuEfL5rBbSwh0b9F7EJFRkleXdBRrGN4VRmRvKog9fKVZETyOoKGl6cuWJQRybsr2IGK0ZWwTbAgI5J3CSkqaBvdOKqCKzIiecu4KjiBitGcEMyhIyNS7AukqOOs4U2hKZhUIFZsGTFa2II6fkeqf1P4SnAB3ygQ6+4a3sR2bMUEHqGjtxZ+xGeCG9iDVIExvZUwheMoCTq4jAdIUEIdb6GFhhXncQyJLsb0p4Vp7NKfO5jGJasYM5gmdqOJBkpIsYwlzOIabnpd/A+9w4fyLkOm8AAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Wall Fire Rating Lines</div>
+        </div>
+        <div class="cmd-desc">Draws detail lines matching each wall's fire-rating line style across every sheeted floor plan and section/elevation hosted on user-selected sheets, with progress shown live and a completion summary of lines created and any skipped walls or missing line styles.</div>
+        <div class="cmd-footer">
+          <span class="tag">FireRatingTools</span>
+          <span class="tag tag-module">Assembly Tools</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Site ── -->
+  <div class="panel-section panel-site" data-panel="site">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+        </svg>
+      </div>
+      <span class="panel-name">Site</span>
+      <span class="panel-count">1 command</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="create railings from csv toposolid line arc" data-desc="railings csv import line arc toposolid host terrain slope batch autocad">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAR0lEQVR42mP4//8/w0BihlEHDDoHiKYe+E9LPHQcgEuMVDY+c0cdMOqAUQeMOmDUAaMOGHXAqANGHTC4HTByW8WjPaMR5wAA8eTUt9qucYwAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Create Railings from CSV</div>
+        </div>
+        <div class="cmd-desc">Batch-creates railings from a CSV of LINE and ARC runs exported from AutoCAD (PDGRAILCSV, CSV contract v2), hosted to a user-picked toposolid so each railing follows the terrain slope.</div>
+        <div class="cmd-footer">
+          <span class="tag">RailingTools</span>
+          <span class="tag tag-module">Site</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -825,20 +907,6 @@
         </div>
       </div>
 
-      <div class="cmd-card" data-name="door host wall type mark assign parameter" data-desc="door host wall type mark parameter assign all instances">
-        <div class="cmd-top">
-          <div class="cmd-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUUlEQVR4AdXBIYsUYQAA0LcfX3PCoAgHZzBs2LDgiBMMxovGK4Ig/oLTYNbrggsGjdc1KCt6NoOCYcP8gAU58JKLXNh4QWGCDDsHMycfw73nohtj7D+MdDfBFLdxAyVy7OOZc4raTVHgFkoUyCQwUsvxFCUKZDYdY4EFKuxgDxUqTU+w0kFUy/HIP0eosECF71hpKtUKFJr2sdJB1HSMKU509x7v1J7jih6CplOc6KfCAQ6w1lMwsGBgwcCCgQXpldh1hiCtCeZ4g7taBOlsYY4tfMahFlEaGT5hjN/4gPuavmIZpfEKE7XLeGnTQyyjNF7jJi7hFz7atPRXlMY37GKOq6gw0yJI5xD31F5gR4sorbd4jDv4okWU3gwzZwgGFgwsGFgwsGBgwcCipm380E2utocHatt6ipoirusnR+6cRmoR1/STIcMaa00/ceoi+AM/VznC9oZiUAAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
-          </div>
-          <div class="cmd-name">Door Host Wall</div>
-        </div>
-        <div class="cmd-desc">Sets the <em>Door's Host Wall</em> parameter on every door instance to the host wall's type mark. Populates this parameter in bulk across the entire model automatically.</div>
-        <div class="cmd-footer">
-          <span class="tag">DocumentationTools</span>
-          <span class="tag tag-module">Schedules &amp; Doors</span>
-        </div>
-      </div>
-
       <div class="cmd-card" data-name="door schedule fill frr fire rating wall host" data-desc="door schedule fill FRR fire rating door host wall frame rating parameters">
         <div class="cmd-top">
           <div class="cmd-icon">
@@ -847,6 +915,20 @@
           <div class="cmd-name">Door Schedule</div>
         </div>
         <div class="cmd-desc">Fills door schedule parameters — <em>Door's Host Wall</em>, <em>Door FRR</em>, and <em>Frame FRR</em> — by reading the host wall type mark and fire rating, then mapping via the PDG fire rating table.</div>
+        <div class="cmd-footer">
+          <span class="tag">DocumentationTools</span>
+          <span class="tag tag-module">Schedules &amp; Doors</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="window schedule fill frr fire rating wall host" data-desc="window schedule fill FRR fire rating window host wall frame rating parameters">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABUUlEQVR4AdXBIYsUYQAA0LcfX3PCoAgHZzBs2LDgiBMMxovGK4Ig/oLTYNbrggsGjdc1KCt6NoOCYcP8gAU58JKLXNh4QWGCDDsHMycfw73nohtj7D+MdDfBFLdxAyVy7OOZc4raTVHgFkoUyCQwUsvxFCUKZDYdY4EFKuxgDxUqTU+w0kFUy/HIP0eosECF71hpKtUKFJr2sdJB1HSMKU509x7v1J7jih6CplOc6KfCAQ6w1lMwsGBgwcCCgQXpldh1hiCtCeZ4g7taBOlsYY4tfMahFlEaGT5hjN/4gPuavmIZpfEKE7XLeGnTQyyjNF7jJi7hFz7atPRXlMY37GKOq6gw0yJI5xD31F5gR4sorbd4jDv4okWU3gwzZwgGFgwsGFgwsGBgwcCipm380E2utocHatt6ipoirusnR+6cRmoR1/STIcMaa00/ceoi+AM/VznC9oZiUAAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Window Schedule</div>
+        </div>
+        <div class="cmd-desc">Fills window schedule parameters — <em>Window's Host Wall</em>, <em>Window FRR</em>, and <em>Frame FRR</em> — by reading the host wall type mark and fire rating, then mapping via the PDG fire rating table.</div>
         <div class="cmd-footer">
           <span class="tag">DocumentationTools</span>
           <span class="tag tag-module">Schedules &amp; Doors</span>
@@ -960,6 +1042,109 @@
     </div>
   </div>
 
+  <!-- ── LD Calculator ── -->
+  <div class="panel-section panel-ldcalc" data-panel="ldcalc">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>
+          <line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/>
+          <line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/>
+          <line x1="8" y1="18" x2="10" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/>
+        </svg>
+      </div>
+      <span class="panel-name">LD Calculator</span>
+      <span class="panel-count">6 commands</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="assign items to face building face windows doors openings" data-desc="assign building face windows doors openings exposing wall colorize tag UPO">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACe0lEQVR4nMWXu2tVQRDGf2dzjA/UG18IRlEEQSORIKithQiChaV2Fv4FVmpnaWur9vYWwSpNCkHTWPhCBBVUxFfUE82N3iML31zX47lmz+PiB8Mye3Z3ZmdmZ+bAbzjiELsuCkmB70hAXvjmecMnWoaTsKvAe9HHEvLzH4AbwEjblugA33XTGNoWKN8ILhgzHX4SmADOir8o/hjQlaKt3T4tccVd4C0wKv4x8BB4IYUsRlpXwHACeA5MiT+sGNgq3/9kCNggITH+/wZs1z43DAtcAl4Be4ELwHVgFtgEXJFbWnNBmQW2aO6A+FPi1ygAF2WBRC5JalCpBXoS6AU/BfaJ3w3sBMaDzba2bjw4nYEdOAa8AVbqqdmiVEJMkH8ZC8B+YD48KBKJnvuiuTIJAukacDowrQVdaLauaF7JKwmssRzsvExxdtPLLtYCn+HCOQs4G70FZuSSJvgM7PBjGAOJov9fWCt3mdkXlCmfAauBHwP2masmgcu6SEeK/LWwjKz4bFRByuVHP94B1kXe/FDghvGyRNJbhvLg9ueBe8ARYA7YpflRKRySzXUCa/dvXBUWcI+Utp8Ae4Bp4KCCtBe8niL9AUez5PUOOA48UOa8rTgpNjQD4Roo0JUQX7jOAC+BzSrnyOS1akEs7GmuAO4rOR0FlvS9N2wFCAR5Zb4At/qzkQo42oH5vHKvmLakAHWLk+M/I22w1zJkTLSPDLpw2iARZYOSSwlszdfCGVRVwMp3rmZ1KbInsDVTQWddyf2JaJUal7whZaqqlWB+9E3La5kzU0mOoUx7/D/HOZ3lovJ1AMt+vvyur7jX4JXwHVXt7rqNp9t/Ob8At5PN+IjzzYIAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Assign Items to Face</div>
+        </div>
+        <div class="cmd-desc">Colorizes each exposing building face by its current assignments, then lets the user assign windows, doors, and openings to a building face via a picker dialog matching the LD_Building_Face filled regions.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="generate ld report limiting distance max upo" data-desc="limiting distance report max unprotected opening percentage part 9 autocalculate legend">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC6UlEQVR4nLWXu2sVQRTGf7t3jYmKigii5uE7vkC0EQsbEQWtrCxEBME/wCKFWKQONv4DmkoQRUGwtBCUKKiVogYT8dEEfD9j4s1dOeEbGMd79+7kXg8MszM7c8433zkzcwaKJSFO0sjxJE3+5cASYCnwu8H4XP3vgGmBqMUCCSVRWQaMSfEk8KtOmVR5AmzS/IwWJVW9VissW163C0SqehXwQ5QeBPqBzar97xEPxKt2gEhVrxa9privYPxt4KPcFQUijQC1QOMz1f53F/AJOAy8FdhbAlEtspNGAKgVFNshncAosBt4DPR4IGqNbGW0RzoULyPaMYvVbyBuArsUS25rz/3gaCDXtfpuBSWKhxlgo/rdeTHnIOyXgnlAJSj+HGekW3NrHqi0FRckAmL+rifu9MuDduGqswgAZnil/DrdQLHpe69t2JJ70zouWAFcLnEa3tHcnsB9vt6/EJeVhcBZ4KroDRlwQfbCazeVrLR5mA88A8ZLjm87gGm5pM+LAWfEfWe6lscDutPY3CJtIQbuCkh3nXukIwSS/YcYGNX5n3nMbAcmgKmAsSgGtlBeBgRkRmBztQe8g2t2AUkBgJoAjOmi2aAMKIyBxJtjgToI7PN0mZ6vSuvQBXUE+FnEQisxYOWD3PVZLBwFTqht/y9JfyWGgfX6tyOIATd2p4yawf3APeCL8oiTwLCyqhtiag9wP4YBS7+KZFDjhr2539R3zBt3QYDPWSNmF+QCVgnS7opWvVftdcBzMWSrNxkCzugmndC/rbEAHOXOz05clPu3YaeKm9Ol/morCcmUjFSDdMy1H2ncS2CNYsWyIJPTQK/S/HGBeFqWAbfCngYvH+eCh6qPA1eAN0GyYjoOKB6MmWtFRh0zvR7l/iuoXvnugc3VrjbbhjR5mtnx+yDydRSWqmc410G0yF1QSQEL7qSzPVv0KAmZs3mHgFM6O5ybzecXgfNiZVZ/7PM7Rgz4NmC5rmgD8M9l9AflnBkSOPJVjQAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Generate LD Report</div>
+        </div>
+        <div class="cmd-desc">Reads all exposing building-face regions, tallies opening areas, applies the chosen max-UPO method (manual entry, or Part 9 autocalculate — Alberta Building Code table lookup or code formula), and updates the limiting distance legend view.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="glazed opening calculator web tool browser" data-desc="glazed opening calculator web browser limiting distance real UPO quick check">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACPElEQVR4nMWXTWvVQBSGn0nTW6hQ1IUf1dKN4MaNggs3gjvX/gD/lvgPpG7EdlW7bZeuxYUWUVRERVurF9tcOfBOOY6TXHOT0BeGJGcmc97zOUlgGISGuQKogMlAuvtj2hWnZWm02sZP4CpwALzsW3/QmAc2gO/Ab7l6H/gMvNXzLb0z1zcBwxngEPgkIo+BXSm28axPpTkCS7L8qZ5vAO+lfA9YkdxCQskwKOX268AOsCD3nweO/MKiIZZth99zX5avy/K7wJqIxcTMInSwOhpzFvjhYv4BeAC81vNlvz7UlM8sRL7qOgI2gZuydkGVYffPgTsiaJiEhP1D4J6Y5sKTg20cpPS+EtBInHPd7lAlZ6U41vrjThic5b+c62YZl9q6rXT3QckzUtLsOi+YlY+AZeC281qlzN5KsnuuptdHolkCcVMj8gJ4w984kCuthXqYW9OuNpmW7RFljXzR9W+0WSRXJB6wtTOjrJFXiQVN99UQBIrEA+lc7torgb2MdUdJbCu3tncC6yrJWKKm+JqaivV2XC3Pa8T67oXAcnpoSLll+moi7xSC9Bz/Iquu8C+2gXcZ+UVZP3aN6L9JFVPk/qRL3Vsnb4WyYc7XvE9Gf35UQxEIDdZ7WRiKwDhThpOaMhz3SaCSkhUdqz4EI1WBTzSTX0gIdSJwSi610y2FETC8aphrHY7CfXx8A57o5yHtAagx2UhR6R1792P6sTENISOr+6jwXTGH2CNaEThxhIxs1tba6Vg+MfwBeGuZc2fAgvcAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Glazed Opening Calculator</div>
+        </div>
+        <div class="cmd-desc">Opens the Glazed Opening Calculator web tool (PDGSupportDocs) in the default browser, for quickly checking limiting distance and real UPO % outside of Revit.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="ld help wiki limiting distance" data-desc="limiting distance calculator wiki help notion browser open">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAADeklEQVR4nK2XW4iNURTHf993jhHGNJJSbnl1S2gMDwxTI6FMKCReFMnw7IESDx6UiLwoL1Ne8DYpcplEGrdCHoYHlxq5TGHIdeZo139pnd13LnNZ9fWdb++1/mvttdftJAydkui7MBIglSjVM6Anay8Y0s8IG5CTQn/KPFArjG/Anwg3rcaQpIp9D9QArAYagZnABK1/Bl4DXcAV4I7WzSPDvp5m4JrzQqWnE1jj5NPBeiCVstHAcWCv2+uWgidAj9YmA3OBZcAsx3seaAO+O8yqT14H3HSnCu7dCIwpI1sDrANuR3KTKnnCK88JqNOBHANGRQE4Snw1+p2PcA4qdoL8Q2CcDCgbdzm9zzjl5v5ESszILNnUvQPtcEa0RzpKKl8enRydMLY8XNFsYA4wMTo98kygAw5vbTkjUr1vKVgei9FObSkZniPAOwf8BTgH1DsjzGMoJgZ0Fbmsa0j1Xuhctl5r+cjqE05xB3BBdaAg42scnsmscCnclOWFvN6HxfRCQP7kyN2mfJuTD+sfSrjZ5B9r/6TXmdeH5ecSva8Dv7X/1yn6ARwVaLsLuGfAJ8XCDKfYDAkYV4H5qqb4Mp04i7pl5Z7IM1nkPXNIgAMqSLg9w9gq7B71kP+6E33UOze2Rm70SvN6LCDPumvZFyn3GM3i6QOmGF8agRuVah4FubOg04br2K3rCu9TrnNmyZqeoixIXK6/FOOuyH1Z/HVKv8C/02HEZBibxRvSd7xhpVpM1c9faWNeCQ/EBvwE3gOXdPJy/d9i462uIeAUzDrrVF26q5WyvN8YHZD9/qhTIT7jjcnWWyR7P8qOokBpdAUjDB5Z12BxMxXoVWo2RzhGVvWWugLXUoIX61R3ZcQ9Z0CSYcD0CqC+FNsw8zQq7UVkwqtcWoWWiquKnsLaAmCR4oGIx5pRm8PbVKm+5NwkY9NtaKm4VluJco5vg1I0YF2OdJStbmOBB86I0FI9WTGygcS+vQf2A7+E8VwDrBWvspTqPUkRa+67obuuBNCkydjkQp+YFmEXnTiLLC1DwTgNbHd7j2TMEzcT2FAalC92vBdVIXsHM5SSYW2rsqKakdxmwC3DGcuNLF3M8mb1+waloU1AX4E3ipsOpV1/NX9MEqqjrDJbq/RLZEBfFTJDNgAHGmSsAMVYYd86ZVV/xwZrQCxr8kP+//cPhsD2jP7NIMcAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">LD Help</div>
+        </div>
+        <div class="cmd-desc">Opens the Limiting Distance Calculator wiki (Notion) in the default browser. General "PDG Revit Tools" feedback goes through HelpTools' Feedback command instead.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="place scoped ld views sheet elevation autodetect" data-desc="place scoped LD schedule sheets autodetect elevation views building face legend">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACRklEQVR4nL2XzY5NQRDHf6dvCzEMw8hIRFgRluyEIBIPYO8RJLYST2BnLd5AwgNIbK0QCbG28JH4yhB3MHOPtPwrqdvOx703feafdE5/VHVVV1VX9YFyqPTdrebnBkeltgQ8A56rb/PbokDCIeAXUAMn/81AoAOBsvgDfAcmUqIXYQBLhHn2jS2bLCI45zX/53FQdykQZL55UTsX4PppfqtLRswW08LeFst0oZKw/e60B4GvmcCkzHrOiCO6Bdx0vpzXHZVT4psTXLv+PeC2aCbGhE7+Q8RDtiR0TTKDN/UOYENZ7DrwZo6YMBcsA4/0vQa8BUYy/THgATCWrCnmhBXgszY6zWJIG3+S0keytaPae+zWQluwLUlz074P5s9VKZHGB4D3Gm8Ce5oYY8uGEyd4FgVCdvU2ZE3j32pzZaQMbPNk/jvALuCd5jpTciykwEp2zZIL9sky67JAVVKByvE/BM4DOyXQrhuqjC+BK22ujCyOWoF1VeNXDTk/leQLupa/Syvgg/U1cJb/8Ri4PIQLPKz8WtWrXQIb9ZXmSDmY333a7UUsqEDILMAsxSwWEFw3JBrrb/bVkljo1KeAJ84C9j0jmlGbS2LHxtaaGM20qbA8Bc4BlxrokmVeAD/1QJlZgbFM11eKk4CLKjz5Vat18i8a9+aBykXvCRWWrveAmXqSvQVzrIruuHuQTAVnpe/yNr6IDvv3QO2Kxl3gxiwJZAGYS+8DH826VQPhWuH84JHi5EMXQRhIsEej//O5If9op4L6L4+7un5D6dAvAAAAAElFTkSuQmCC" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Place Scoped LD Views</div>
+        </div>
+        <div class="cmd-desc">Autodetects which sheets host elevation views containing LD_Building_Face filled regions, then places the LD schedule — header plus one row per building face — directly on each of those sheets, alongside the elevations.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+      <div class="cmd-card" data-name="regenerate ld report recalculate openings" data-desc="recalculate opening areas percentages max upo refresh legend annotations">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACw0lEQVR4nMWXTWsUQRCGn50d4/cHIviVTfBzox5EQdSzBkVP/gQP/gU9iHgVvOQXeBAFUfTkzSCCGBA9CIoSTEDxoKDoQSVx3cxKyduhMs5OZnYHfKHp6Z7qrrerq7q6IR81yiEqKU9tkX8dYC2wDvjdRb6j/s9ASySSskTSqKmsB6Y08Qwwm1FmVF4BuzU+pk9EqrdphUXL+6pIRKq3AD9l0hNAExhR7b8nHIl3VZCIVG+VeW3i4Rz5R8BXbVcpElEJUiskH6v238uBb8Bp4IPIjotEO09PVIJAklMsQpYBk8Bh4CXQcCSSbrpiqsGA/GVCEbNG/UbiPnBQvhRCu/eDowvuafWDckrkD3PALvWH86JnJ2xqgiVAPVX8mKBkUGMTRyrqZwtqImL7nYVw+nVS7dxVxyUImOLN2tdWl4ltvi8Kw762N8rYgo3ArQKn4WONbaS2z8+7gHFRrAQuAndk3rQFgpO9de1FERdWD0uBN8B0QfnKCbS0JcPOB4KS8B18YLqHu0RlPvBAY4f+hw/EipbVOeHaswX2FBx7G/gIXAE+ZVgg8uTjCnwgTFbXKWmm3wRcEHkPf1X7Jy9U5QMdpeZLSkDeApa0zgPXg55aDoFEBKaUanfo3/6UDwTZA/IRy/+jwBORN6V7FcIjqg1HgKdlLGCD83BZcmYlw/aMKDDcUJa86hUVQUfy6Ww4oPqo5MYlZ0qy8FD/m71kw0DEO0+S0eflPRZEQOgoil9S1k5dx0L7heSOqz2bIlNX/zGRnSxqgbDCRpeXT13mfq76DHBSl9NwWZlTGdV/I3Q3T2mwzJAzr38FZZUfjqzV3/Vtig8BZxWe1nfTkc99mtnx+6zk6yhd2iIX2uakq4I/1LL1z5OwAZaG8x4lHsHJTgHngJ1ula+Ba8CYrPJ3/r5S5iIw4vuADXo5GwFzZMP8MfwHmjgHPxyIShIAAAAASUVORK5CYII=" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Regenerate LD Report</div>
+        </div>
+        <div class="cmd-desc">Re-reads all building-face regions, recalculates opening areas/percentages, shows the same max-UPO method dialog again, and refreshes every placed LD annotation instance in the model — the main legend and every per-sheet scoped legend alike.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
   <!-- ── Model Setup ── -->
   <div class="panel-section panel-model" data-panel="model">
     <div class="panel-header">
@@ -1042,6 +1227,37 @@
         <div class="cmd-footer">
           <span class="tag">UnitTools</span>
           <span class="tag tag-module">Model Setup</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Grid Tools ── -->
+  <div class="panel-section panel-grid" data-panel="grid">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+          <line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/>
+        </svg>
+      </div>
+      <span class="panel-name">Grid Tools</span>
+      <span class="panel-count">1 command</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="toggle grid extents 2d 3d view specific model" data-desc="grid extents 2d 3d toggle plan section elevation batch bubble">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVR4nO2WSQ7AIAwDof//c3qlG2Qz7iG+ICGIR0ASWiuR1QN7JSPekWg+m0+VLACgEBoDGIQlsHqt9w2kqQDoAFZRs0BjYDb3luKZiSmm9w18mUR6i1uhO6dnQQEUAApAnRUIALmN4/wDDAEwFqNljUBdQX8B2QqgFgMgvVVbP6sX7T4BSrf8t07xTSYJu1vw3AAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Toggle Grid Extents</div>
+        </div>
+        <div class="cmd-desc">Toggles selected grids (or every grid visible in the active view, if nothing is selected) between 2D view-specific and 3D model extents — the same effect as right-clicking a grid's bubble and choosing 2D/3D, batched across many grids at once in the active plan, section, or elevation view.</div>
+        <div class="cmd-footer">
+          <span class="tag">GridTools</span>
+          <span class="tag tag-module">Grid Tools</span>
         </div>
       </div>
 
