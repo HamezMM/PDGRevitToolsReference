@@ -353,6 +353,7 @@
   .panel-site        .panel-icon { background: #65a30d20; color: #84cc16; }
   .panel-ldcalc      .panel-icon { background: #0891b220; color: #22d3ee; }
   .panel-grid        .panel-icon { background: #6366f120; color: #818cf8; }
+  .panel-spaceplanning .panel-icon { background: #9333ea20; color: #a855f7; }
 
   .panel-sheets      .panel-name { color: #0696d7; }
   .panel-elevations  .panel-name { color: #e53935; }
@@ -366,6 +367,7 @@
   .panel-site        .panel-name { color: #84cc16; }
   .panel-ldcalc      .panel-name { color: #22d3ee; }
   .panel-grid        .panel-name { color: #818cf8; }
+  .panel-spaceplanning .panel-name { color: #a855f7; }
 
   /* cmd-icon per panel color */
   .panel-sheets      .cmd-icon { background: #0696d718; color: #3fb3e8; }
@@ -380,6 +382,7 @@
   .panel-site        .cmd-icon { background: #65a30d18; color: #a3e635; }
   .panel-ldcalc      .cmd-icon { background: #0891b218; color: #67e8f9; }
   .panel-grid        .cmd-icon { background: #6366f118; color: #a5b4fc; }
+  .panel-spaceplanning .cmd-icon { background: #9333ea18; color: #c084fc; }
 
   /* ── Responsive ── */
   @media (max-width: 700px) {
@@ -420,13 +423,13 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">47 commands · 13 panels</div>
+    <div class="stats" id="stats">48 commands · 14 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">47</span>
+      <span class="pill-count" id="count-all">48</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
@@ -477,6 +480,11 @@
       <span class="pill-dot" style="background:#6366f1"></span>
       Grid Tools
       <span class="pill-count" id="count-grid">1</span>
+    </button>
+    <button class="pill" data-filter="spaceplanning">
+      <span class="pill-dot" style="background:#9333ea"></span>
+      Space Planning
+      <span class="pill-count" id="count-spaceplanning">1</span>
     </button>
     <button class="pill" data-filter="help">
       <span class="pill-dot" style="background:#ffca28"></span>
@@ -1258,6 +1266,38 @@
         <div class="cmd-footer">
           <span class="tag">GridTools</span>
           <span class="tag tag-module">Grid Tools</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Space Planning ── -->
+  <div class="panel-section panel-spaceplanning" data-panel="spaceplanning">
+    <div class="panel-header">
+      <div class="panel-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="1"/>
+          <line x1="3" y1="10" x2="14" y2="10"/><line x1="14" y1="10" x2="14" y2="21"/>
+          <line x1="14" y1="15" x2="21" y2="15"/>
+        </svg>
+      </div>
+      <span class="panel-name">Space Planning</span>
+      <span class="panel-count">1 command</span>
+    </div>
+    <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="generate space planning walls doors" data-desc="space planning walls doors generate family instance wall type thickness finish face interior perimeter">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAARklEQVR42mOQz4/5P5CYYdQBg84B+x/foikedcCoA0YdMOqAUQeMOmDUAaMOGHXAqANGHTD4HYAPAwEDMZhmPaNRB9DCAQD95FhGejlrPQAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Generate Space Planning Walls</div>
+        </div>
+        <div class="cmd-desc">Generates real Walls (Location Line: Finish Face Interior) and door FamilyInstances from pre-selected "A Space Planning*" family instances. Extracts each unit's interior/exterior wall-plane geometry, groups detected thicknesses to the nearest 3mm, then lets you map each thickness to a WallType and pick one door type from a dialog. Overlapping shared-wall edges between adjacent units are deduplicated.</div>
+        <div class="cmd-footer">
+          <span class="tag">SpacePlanningTools</span>
+          <span class="tag tag-module">Space Planning</span>
         </div>
       </div>
 
