@@ -423,13 +423,13 @@
       </svg>
       <input type="text" id="search" placeholder="Search commands…" autocomplete="off" spellcheck="false">
     </div>
-    <div class="stats" id="stats">49 commands · 14 panels</div>
+    <div class="stats" id="stats">50 commands · 14 panels</div>
   </div>
 
   <div class="filters">
     <button class="pill active" data-filter="all">
       <span>All</span>
-      <span class="pill-count" id="count-all">49</span>
+      <span class="pill-count" id="count-all">50</span>
     </button>
     <button class="pill" data-filter="sheets">
       <span class="pill-dot" style="background:#0696d7"></span>
@@ -469,7 +469,7 @@
     <button class="pill" data-filter="ldcalc">
       <span class="pill-dot" style="background:#0891b2"></span>
       LD Calculator
-      <span class="pill-count" id="count-ldcalc">6</span>
+      <span class="pill-count" id="count-ldcalc">7</span>
     </button>
     <button class="pill" data-filter="model">
       <span class="pill-dot" style="background:#66bb6a"></span>
@@ -1076,9 +1076,23 @@
         </svg>
       </div>
       <span class="panel-name">LD Calculator</span>
-      <span class="panel-count">6 commands</span>
+      <span class="panel-count">7 commands</span>
     </div>
     <div class="cmd-grid">
+
+      <div class="cmd-card" data-name="load ld families parameters check" data-desc="load limiting distance calculator families into model check missing LD parameters">
+        <div class="cmd-top">
+          <div class="cmd-icon">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw1AUhU9TpUUqCgYRcchQneyiIo6likWwUNoKrTqYvPQPmjQkKS6OgmvBwZ/FqoOLs64OroIg+APiLjgpukiJ96WFFjFeeLyP8+45vHcfIDQqTLN6ooCm22YqHpOyuVUp8AofhjGIIESZWUYivZiBZ33dUzfVXYRneff9Wf1q3mKATyKOMsO0iTeIZzdtg/M+schKskp8Tjxp0gWJH7mutPiNc9FlgWeKZiY1TywSS8UuVrqYlUyNeIY4rGo65QvZFquctzhrlRpr35O/MJTXV9JcpzWGOJaQQBISFNRQRgU2IrTrpFhI0XnMwz/q+pPkUshVBiPHAqrQILt+8D/4PVurMD3VSgrFgN4Xx/kYBwK7QLPuON/HjtM8AfzPwJXe8VcbwNwn6fWOFj4CBraBi+uOpuwBlzvAyJMhm7Ir+WkJhQLwfkbflAOGboG+tdbc2uc4fQAyNKvlG+DgEJgoUva6x7uD3XP7t6c9vx9n1nKiGGtWVgAAAAZiS0dEAI8ASQAfOLYnhgAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAAd0SU1FB+kBFhArNhBhCpkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAA60lEQVRYw+2WvQ2EMAyF7RhlDkpmoWQSyqOhpaVkEuZhjiDH13AnhOBIIBHSKa+C8OMvsh0/FJEXPCgFDyvz/YCZiZkzAAARQUQUAAAiYqUUf+6jAczzrIeqaLfr9Tg1yyUCgMQAQACQoSraVbCv+jLv9tZD1AAePbDWkohs/yFBAZiZjiCWnNuoXUBE7Lur0CmQvz4HEkACSAAJIAG4TsNoMwHPTGlf5t2B87n1rjOAj9sxxmittfFxR041UI9Ts93dnnyDexWhC8QVX+jVBb8gYprSU4irwS+fA2uIO8GduyBkzoMCpFkQQm+vwIOkU7O3HQAAAABJRU5ErkJggg==" alt="" class="cmd-icon-img">
+          </div>
+          <div class="cmd-name">Load LD Families</div>
+        </div>
+        <div class="cmd-desc">Loads the four LD Calculator families (compartment limiting distance, building face data symbol, limiting distance tag, and header) into the model, skipping any already loaded, then checks the LD_ parameter names and lists any that still need to be added to the model.</div>
+        <div class="cmd-footer">
+          <span class="tag">LDCalculatorTools</span>
+          <span class="tag tag-module">LD Calculator</span>
+        </div>
+      </div>
 
       <div class="cmd-card" data-name="assign items to face building face windows doors openings" data-desc="assign building face windows doors openings exposing wall colorize tag UPO">
         <div class="cmd-top">
